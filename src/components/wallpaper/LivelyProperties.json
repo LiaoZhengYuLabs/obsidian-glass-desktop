@@ -1,0 +1,406 @@
+{
+    "audioReact":  {
+                       "type":  "checkbox",
+                       "value":  true,
+                       "text":  "Audio Visualiser"
+                   },
+    "balancedPerformance":  {
+                                "type":  "checkbox",
+                                "value":  true,
+                                "text":  "UI 桌面平衡性能模式"
+                            },
+    "randomSplats":  {
+                         "type":  "checkbox",
+                         "value":  true,
+                         "text":  "Random Splats"
+                     },
+    "quality":  {
+                    "type":  "dropdown",
+                    "value":  2,
+                    "text":  "Quality",
+                    "items":  [
+                                  "High",
+                                  "Medium",
+                                  "Low",
+                                  "Very Low"
+                              ]
+                },
+    "simResolution":  {
+                          "type":  "dropdown",
+                          "value":  1,
+                          "text":  "Sim Resolution",
+                          "items":  [
+                                        "32",
+                                        "64",
+                                        "128",
+                                        "256"
+                                    ]
+                      },
+    "densityDiffusion":  {
+                             "max":  40,
+                             "min":  0,
+                             "tick":  41,
+                             "text":  "Density Diffusion",
+                             "type":  "slider",
+                             "value":  10
+                         },
+    "velocityDiffusion":  {
+                              "max":  400,
+                              "min":  0,
+                              "tick":  401,
+                              "text":  "Velocity Diffusion",
+                              "type":  "slider",
+                              "value":  120
+                          },
+    "pressure":  {
+                     "max":  100,
+                     "min":  0,
+                     "tick":  101,
+                     "text":  "Pressure",
+                     "type":  "slider",
+                     "value":  8
+                 },
+    "vorticity":  {
+                      "max":  50,
+                      "min":  0,
+                      "tick":  51,
+                      "text":  "Vorticity",
+                      "type":  "slider",
+                      "value":  18
+                  },
+    "splatRadius":  {
+                        "max":  100,
+                        "min":  1,
+                        "tick":  100,
+                        "text":  "Splat Radius",
+                        "type":  "slider",
+                        "value":  12
+                    },
+    "shading":  {
+                    "type":  "checkbox",
+                    "value":  true,
+                    "text":  "Shading"
+                },
+    "colorful":  {
+                     "type":  "checkbox",
+                     "value":  true,
+                     "text":  "Colorful"
+                 },
+    "bloomEnable":  {
+                        "type":  "checkbox",
+                        "value":  true,
+                        "text":  "Bloom"
+                    },
+    "bloomIntensity":  {
+                           "max":  200,
+                           "min":  10,
+                           "tick":  191,
+                           "text":  "Bloom Intensity",
+                           "type":  "slider",
+                           "value":  24
+                       },
+    "bloomThreshold":  {
+                           "max":  100,
+                           "min":  0,
+                           "tick":  101,
+                           "text":  "Bloom Threshold",
+                           "type":  "slider",
+                           "value":  72
+                       },
+    "sunRaysEnable":  {
+                          "type":  "checkbox",
+                          "value":  true,
+                          "text":  "Sunrays"
+                      },
+    "sunRaysWeight":  {
+                          "max":  100,
+                          "min":  30,
+                          "tick":  71,
+                          "text":  "Sunray Weight",
+                          "type":  "slider",
+                          "value":  35
+                      },
+    "bgColor":  {
+                    "text":  "BG Color",
+                    "type":  "color",
+                    "value":  "#050817"
+                },
+    "imgSelect":  {
+                      "type":  "folderDropdown",
+                      "value":  "pexels-neosiam-601798.jpg",
+                      "text":  "Image",
+                      "filter":  "*.jpg|*.png",
+                      "folder":  "wallpapers"
+                  },
+    "bgImgChk":  {
+                     "type":  "checkbox",
+                     "value":  false,
+                     "text":  "Background"
+                 },
+    "spaceEnvironmentLabel":  {
+                                  "type":  "label",
+                                  "value":  "动态深空环境 · 太极融合层"
+                              },
+    "spaceEnvironmentEnabled":  {
+                                    "type":  "checkbox",
+                                    "value":  true,
+                                    "text":  "启用动态深空环境"
+                                },
+    "spaceBackgroundEnabled":  {
+                                  "type":  "checkbox",
+                                  "value":  true,
+                                  "text":  "显示深空摄影融合层"
+                              },
+    "spaceStarTwinkle":  {
+                           "type":  "checkbox",
+                           "value":  true,
+                           "text":  "星星异步闪烁"
+                       },
+    "spaceStarCount":  {
+                           "max":  260,
+                           "min":  120,
+                           "tick":  125,
+                           "text":  "动态星星数量",
+                           "type":  "slider",
+                           "value":  188
+                       },
+    "spaceStarBrightness":  {
+                                "max":  115,
+                                "min":  20,
+                                "tick":  96,
+                                "text":  "星空亮度",
+                                "type":  "slider",
+                                "value":  94
+                            },
+    "spaceStarTwinkleStrength":  {
+                                     "max":  35,
+                                     "min":  1,
+                                     "tick":  35,
+                                     "text":  "星星闪烁强度",
+                                     "type":  "slider",
+                                     "value":  29
+                                 },
+    "spaceStarDrift":  {
+                           "type":  "checkbox",
+                           "value":  true,
+                           "text":  "星点缓慢流动"
+                       },
+    "spaceConstellationsEnabled":  {
+                                          "type":  "checkbox",
+                                          "value":  true,
+                                          "text":  "十二星座轮换"
+                                      },
+    "spaceBlackHoleEnabled":  {
+                                   "type":  "checkbox",
+                                   "value":  true,
+                                   "text":  "显示静谧黑洞"
+                               },
+    "spaceBlackHoleMotion":  {
+                                  "type":  "checkbox",
+                                  "value":  true,
+                                  "text":  "黑洞缓慢旋转"
+                              },
+    "spaceBlackHoleIntensity":  {
+                                     "max":  100,
+                                     "min":  20,
+                                     "tick":  81,
+                                     "text":  "黑洞光效强度",
+                                     "type":  "slider",
+                                     "value":  58
+                                 },
+    "spaceBlackHoleSize":  {
+                                "max":  140,
+                                "min":  60,
+                                "tick":  81,
+                                "text":  "黑洞整体大小",
+                                "type":  "slider",
+                                "value":  100
+                            },
+    "spaceBlackHolePositionX":  {
+                                     "max":  88,
+                                     "min":  12,
+                                     "tick":  77,
+                                     "text":  "黑洞水平位置",
+                                     "type":  "slider",
+                                     "value":  76
+                                 },
+    "spaceBlackHolePositionY":  {
+                                     "max":  78,
+                                     "min":  12,
+                                     "tick":  67,
+                                     "text":  "黑洞垂直位置",
+                                     "type":  "slider",
+                                     "value":  29
+                                 },
+    "spaceMeteorsEnabled":  {
+                               "type":  "checkbox",
+                               "value":  true,
+                               "text":  "稀疏普通彗星"
+                           },
+    "spaceHeroCometEnabled":  {
+                                 "type":  "checkbox",
+                                 "value":  true,
+                                 "text":  "稀有大型白色彗星"
+                             },
+    "spaceCometFrequency":  {
+                                "max":  180,
+                                "min":  55,
+                                "tick":  126,
+                                "text":  "彗星出现频率",
+                                "type":  "slider",
+                                "value":  100
+                            },
+    "spaceCometSize":  {
+                           "max":  160,
+                           "min":  60,
+                           "tick":  101,
+                           "text":  "彗星整体大小",
+                           "type":  "slider",
+                           "value":  100
+                       },
+    "spaceHeroProbability":  {
+                                 "max":  30,
+                                 "min":  0,
+                                 "tick":  31,
+                                 "text":  "大彗星出现概率",
+                                 "type":  "slider",
+                                 "value":  10
+                             },
+    "spaceLowPower":  {
+                         "type":  "checkbox",
+                         "value":  false,
+                         "text":  "深空低功耗模式"
+                     },
+    "animalTrailLabel":  {
+                             "type":  "label",
+                             "value":  "动态动物轨迹系统 · Ambient Experience"
+                         },
+    "animalTrailEnabled":  {
+                               "type":  "checkbox",
+                               "value":  true,
+                               "text":  "启用动态动物轨迹",
+                               "help":  "动物从鼠标光轨中生成，位于桌面背景层，不接收点击，也不会遮挡窗口、Dock 或组件操作。"
+                           },
+    "animalTrailMode":  {
+                            "type":  "dropdown",
+                            "value":  1,
+                            "text":  "场景模式",
+                            "items":  [
+                                          "宁静模式",
+                                          "标准模式",
+                                          "动物狂欢",
+                                          "自定义模式"
+                                      ]
+                        },
+    "animalTrailSpecies":  {
+                               "type":  "dropdown",
+                               "value":  0,
+                               "text":  "生物轮换",
+                               "items":  [
+                                             "完整目录 + 八只主角",
+                                             "仅八只主角",
+                                             "仅 Petdex 完整目录"
+                                         ]
+                           },
+    "animalTrailDensity":  {
+                               "max":  100,
+                               "min":  20,
+                               "tick":  81,
+                               "text":  "动物密度",
+                               "type":  "slider",
+                               "value":  64
+                           },
+    "animalTrailCustomMax":  {
+                                 "max":  80,
+                                 "min":  10,
+                                 "tick":  71,
+                                 "text":  "自定义数量上限",
+                                 "type":  "slider",
+                                 "value":  44
+                             },
+    "animalTrailSize":  {
+                            "max":  150,
+                            "min":  55,
+                            "tick":  96,
+                            "text":  "动物尺寸",
+                            "type":  "slider",
+                            "value":  112
+                        },
+    "animalTrailFrequency":  {
+                                 "max":  160,
+                                 "min":  40,
+                                 "tick":  121,
+                                 "text":  "生成频率",
+                                 "type":  "slider",
+                                 "value":  100
+                             },
+    "animalTrailSpeed":  {
+                             "max":  160,
+                             "min":  40,
+                             "tick":  121,
+                             "text":  "移动速度",
+                             "type":  "slider",
+                             "value":  100
+                         },
+    "animalTrailRichness":  {
+                                "max":  100,
+                                "min":  0,
+                                "tick":  101,
+                                "text":  "动作丰富度",
+                                "type":  "slider",
+                                "value":  82
+                            },
+    "animalTrailGlow":  {
+                            "max":  100,
+                            "min":  0,
+                            "tick":  101,
+                            "text":  "环境光强度",
+                            "type":  "slider",
+                            "value":  80
+                        },
+    "animalTrailPingPong":  {
+                                "type":  "checkbox",
+                                "value":  true,
+                                "text":  "沿轨迹往返"
+                            },
+    "animalTrailFlocking":  {
+                                "type":  "checkbox",
+                                "value":  true,
+                                "text":  "轻量群体行为"
+                            },
+    "animalTrailSpeedReactive":  {
+                                     "type":  "checkbox",
+                                     "value":  true,
+                                     "text":  "鼠标速度联动"
+                                 },
+    "animalTrailParticles":  {
+                                 "type":  "checkbox",
+                                 "value":  true,
+                                 "text":  "太极粒子融合"
+                             },
+    "animalTrailColorLink":  {
+                                 "type":  "checkbox",
+                                 "value":  true,
+                                 "text":  "环境光颜色联动"
+                             },
+    "animalTrailAutoPause":  {
+                                 "type":  "checkbox",
+                                 "value":  true,
+                                 "text":  "全屏与游戏自动暂停"
+                             },
+    "animalTrailLowPower":  {
+                                "type":  "checkbox",
+                                "value":  false,
+                                "text":  "夜间低功耗"
+                            },
+    "animalTrailClear":  {
+                             "text":  "一键清除当前动物",
+                             "type":  "button",
+                             "value":  "clear"
+                         },
+    "animalTrailReset":  {
+                             "text":  "恢复动态动物默认设置",
+                             "type":  "button",
+                             "value":  "reset"
+                 }
+}

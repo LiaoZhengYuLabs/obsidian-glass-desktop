@@ -1,0 +1,9 @@
+{
+  "profileName": "portable-example",
+  "taskName": "Obsidian Glass Desktop",
+  "projectRoot": ".",
+  "startupDelaySeconds": 2,
+  "useScheduledTask": true,
+  "useStartupFolderShortcut": false,
+  "components": []
+}

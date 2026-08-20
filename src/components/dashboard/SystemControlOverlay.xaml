@@ -1,0 +1,139 @@
+<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="System Control Overlay"
+        Width="760"
+        Height="190"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        AllowsTransparency="True"
+        Background="Transparent"
+        ShowInTaskbar="False"
+        ShowActivated="False"
+        Focusable="False"
+        IsHitTestVisible="False"
+        SnapsToDevicePixels="True"
+        UseLayoutRounding="True"
+        Opacity="0"
+        Visibility="Collapsed">
+    <Window.Resources>
+        <Style x:Key="ControlCircleStyle" TargetType="Button">
+            <Setter Property="Width" Value="70"/>
+            <Setter Property="Height" Value="70"/>
+            <Setter Property="Margin" Value="0,0,0,10"/>
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property="Background" Value="#565A5D63"/>
+            <Setter Property="BorderBrush" Value="#86FFFFFF"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Foreground" Value="#EFFFFFFF"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="35">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <Grid Margin="10">
+        <Border x:Name="Shell"
+                CornerRadius="95"
+                Background="#D5DDE1E4"
+                BorderBrush="#E6FFFFFF"
+                BorderThickness="1.5"
+                Padding="25,15">
+            <Border.Effect>
+                <DropShadowEffect Color="#66000000" BlurRadius="34" ShadowDepth="10" Opacity="0.42"/>
+            </Border.Effect>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="200"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="36"/>
+                    <RowDefinition Height="70"/>
+                    <RowDefinition Height="28"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock x:Name="TitleText"
+                           Grid.Row="0"
+                           Text="Brightness"
+                           FontFamily="Segoe UI"
+                           FontSize="30"
+                           FontWeight="SemiBold"
+                           Foreground="#F8FFFFFF"
+                           VerticalAlignment="Center"/>
+
+                <Grid Grid.Row="1" Margin="0,3,14,0">
+                    <Border x:Name="LevelTrack"
+                            Height="50"
+                            CornerRadius="26"
+                            Background="#9054575B"
+                            BorderBrush="#70FFFFFF"
+                            BorderThickness="1"
+                            VerticalAlignment="Center"
+                            ClipToBounds="True">
+                        <Border x:Name="LevelFill"
+                                Width="0"
+                                HorizontalAlignment="Left"
+                                CornerRadius="26"
+                                Background="#FFF5E400"/>
+                    </Border>
+                    <TextBlock x:Name="PercentText"
+                               Text="52%"
+                               FontFamily="Segoe UI"
+                               FontSize="28"
+                               FontWeight="SemiBold"
+                               Foreground="#F8FFFFFF"
+                               HorizontalAlignment="Right"
+                               VerticalAlignment="Center"
+                               Margin="0,0,38,0"/>
+                </Grid>
+
+                <StackPanel Grid.Row="2" Orientation="Horizontal" VerticalAlignment="Center">
+                    <TextBlock x:Name="DirectionText"
+                               Text="↑"
+                               FontFamily="Segoe UI Symbol"
+                               FontSize="14"
+                               FontWeight="SemiBold"
+                               Foreground="#EFFFFFFF"
+                               Margin="2,0,7,0"/>
+                    <TextBlock x:Name="SourceText"
+                               Text="SYSTEM CONTROL"
+                               FontFamily="Segoe UI"
+                               FontSize="10"
+                               Foreground="#B8FFFFFF"
+                               VerticalAlignment="Center"/>
+                </StackPanel>
+
+                <StackPanel Grid.Column="1" Grid.RowSpan="3" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
+                    <StackPanel VerticalAlignment="Center" Margin="0,0,16,0">
+                        <Button x:Name="BrightnessButton" Style="{StaticResource ControlCircleStyle}" ToolTip="Brightness">
+                            <TextBlock Text="☼" FontFamily="Segoe UI Symbol" FontSize="34"/>
+                        </Button>
+                        <Button x:Name="VolumeButton" Style="{StaticResource ControlCircleStyle}" ToolTip="Volume" Margin="0">
+                            <TextBlock Text="&#xE767;" FontFamily="Segoe Fluent Icons" FontSize="28"/>
+                        </Button>
+                    </StackPanel>
+
+                    <Grid Width="96" Height="130" VerticalAlignment="Center">
+                        <Ellipse Width="96" Height="96" VerticalAlignment="Center" Fill="#2BFFFFFF" Stroke="#78FFFFFF" StrokeThickness="1.2"/>
+                        <Ellipse Width="82" Height="82" VerticalAlignment="Center" Fill="#1EFFFFFF" Stroke="#5FFFFFFF" StrokeThickness="4" StrokeDashArray="1,4"/>
+                        <Ellipse Width="42" Height="42" VerticalAlignment="Center" Fill="#6A606469" Stroke="#52FFFFFF" StrokeThickness="1"/>
+                        <Line x:Name="DialNeedle" X1="48" Y1="65" X2="48" Y2="29" Stroke="#F0FFFFFF" StrokeThickness="2.5" StrokeStartLineCap="Round" StrokeEndLineCap="Round" RenderTransformOrigin="0.5,1">
+                            <Line.RenderTransform>
+                                <RotateTransform Angle="-38" CenterX="48" CenterY="65"/>
+                            </Line.RenderTransform>
+                        </Line>
+                    </Grid>
+                </StackPanel>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>

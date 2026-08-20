@@ -1,0 +1,33 @@
+# Local runtime state and logs
+state/
+logs/
+*.log
+
+# User-specific assets and generated media
+assets/icons/*
+assets/wallpapers/*
+assets/screenshots/*
+!assets/screenshots/
+!assets/screenshots/*.png
+
+# Local wallpaper captures and runtime caches
+src/components/wallpaper/space-environment-live.png*
+src/components/wallpaper/space-environment-test.png
+src/components/wallpaper/**/logs/
+src/components/wallpaper/**/backups/
+src/components/wallpaper/**/state/
+src/components/wallpaper/**/.edge-headless*
+src/components/wallpaper/animal-trail/catalog/assets/
+src/components/wallpaper/animal-trail/assets/*
+!src/components/wallpaper/animal-trail/assets/.gitkeep
+
+# Never publish locally compiled or downloaded runtime binaries
+*.exe
+*.dll
+*.pdb
+speech-runtime/
+
+# Editors and PowerShell leftovers
+.vscode/
+*.tmp
+*.bak

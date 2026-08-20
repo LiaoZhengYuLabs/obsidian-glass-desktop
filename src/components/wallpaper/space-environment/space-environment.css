@@ -1,0 +1,870 @@
+#space-environment {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  overflow: hidden;
+  contain: strict;
+  pointer-events: none;
+  user-select: none;
+  isolation: isolate;
+  transform: translateZ(0);
+}
+
+#space-environment[hidden],
+#space-environment.space-paused .space-comet {
+  display: none;
+}
+
+.space-background,
+.space-star-field,
+.space-star-layer,
+.space-constellation-layer,
+.space-black-hole-layer,
+.space-meteor-layer,
+.space-hero-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.space-background {
+  z-index: 0;
+  inset: 2.5vh 2.5vw;
+  opacity: var(--space-background-opacity, 0.22);
+  background-image: var(--space-background-image);
+  background-position: center 44%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  mix-blend-mode: screen;
+  filter: saturate(0.72) contrast(1.08) brightness(0.82);
+  transform: translate3d(var(--space-shift-x, 0), var(--space-shift-y, 0), 0) scale(1.025);
+  transition: transform 900ms cubic-bezier(.2, .65, .35, 1), opacity 500ms ease;
+  -webkit-mask-image: radial-gradient(ellipse at 51% 46%, #000 28%, rgba(0, 0, 0, .96) 48%, rgba(0, 0, 0, .58) 70%, rgba(0, 0, 0, .16) 86%, transparent 100%);
+  mask-image: radial-gradient(ellipse at 51% 46%, #000 28%, rgba(0, 0, 0, .96) 48%, rgba(0, 0, 0, .58) 70%, rgba(0, 0, 0, .16) 86%, transparent 100%);
+}
+
+.space-star-field {
+  z-index: 1;
+  mix-blend-mode: screen;
+  will-change: transform;
+  animation: space-star-field-flow 74s cubic-bezier(.42, 0, .58, 1) infinite alternate;
+}
+
+.space-star-layer {
+  inset: -3px;
+  transition: transform 1100ms cubic-bezier(.2, .65, .35, 1);
+}
+
+.space-star-layer--far {
+  transform: translate3d(var(--space-far-shift-x, 0), var(--space-far-shift-y, 0), 0);
+}
+
+.space-star-layer--middle {
+  transform: translate3d(var(--space-middle-shift-x, 0), var(--space-middle-shift-y, 0), 0);
+}
+
+.space-star-layer--near {
+  transform: translate3d(var(--space-near-shift-x, 0), var(--space-near-shift-y, 0), 0);
+}
+
+.space-star {
+  position: absolute;
+  width: var(--star-size);
+  height: var(--star-size);
+  pointer-events: none;
+}
+
+.space-star-core {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: var(--star-color);
+  opacity: var(--star-min-opacity);
+  box-shadow: 0 0 var(--star-glow) var(--star-glow-color);
+  transform: translateZ(0);
+  animation: space-star-twinkle var(--star-duration) ease-in-out var(--star-delay) infinite;
+}
+
+.space-star--near .space-star-core::after {
+  position: absolute;
+  content: "";
+  inset: -2.5px;
+  border-radius: 50%;
+  opacity: .28;
+  background: radial-gradient(circle, var(--star-color) 0, rgba(226, 237, 252, .2) 24%, transparent 68%);
+}
+
+.space-star--near .space-star-core::before {
+  position: absolute;
+  content: "";
+  left: 50%;
+  top: 50%;
+  width: 1px;
+  height: calc(var(--star-size) * 2.7);
+  opacity: .34;
+  background: linear-gradient(transparent, var(--star-color), transparent);
+  box-shadow: 0 0 4px var(--star-glow-color);
+  transform: translate(-50%, -50%);
+}
+
+.space-star--drift {
+  animation: space-star-drift var(--star-drift-duration) ease-in-out var(--star-drift-delay) infinite alternate;
+}
+
+@keyframes space-star-twinkle {
+  0%,
+  100% {
+    opacity: var(--star-min-opacity);
+    transform: scale(.988);
+  }
+
+  46% {
+    opacity: var(--star-max-opacity);
+    transform: scale(var(--star-twinkle-scale));
+  }
+
+  72% {
+    opacity: var(--star-mid-opacity);
+    transform: scale(1.008);
+  }
+}
+
+@keyframes space-star-drift {
+  from {
+    transform: translate3d(var(--star-drift-x-from), var(--star-drift-y-from), 0);
+  }
+
+  to {
+    transform: translate3d(var(--star-drift-x-to), var(--star-drift-y-to), 0);
+  }
+}
+
+@keyframes space-star-field-flow {
+  0% { transform: translate3d(-5px, 3px, 0) scale(1.002); }
+  45% { transform: translate3d(7px, -4px, 0) scale(1.006); }
+  100% { transform: translate3d(-2px, -8px, 0) scale(1.003); }
+}
+
+.space-constellation-layer {
+  z-index: 2;
+  overflow: hidden;
+  contain: layout paint style;
+}
+
+.space-constellation,
+.space-constellation * {
+  pointer-events: none;
+}
+
+.space-constellation {
+  --constellation-line: rgba(195, 220, 255, .42);
+  --constellation-core: rgba(245, 250, 255, .94);
+  --constellation-glow: rgba(133, 184, 255, .28);
+  --constellation-guide: rgba(226, 238, 255, .42);
+  position: absolute;
+  aspect-ratio: 1.28 / 1;
+  opacity: 0;
+  color: rgba(222, 235, 255, .7);
+  filter: drop-shadow(0 0 8px var(--constellation-glow));
+  transform-origin: center;
+  will-change: transform, opacity;
+  animation: space-constellation-life var(--constellation-duration) ease-in-out forwards;
+}
+
+.space-constellation--tone-1 {
+  --constellation-line: rgba(214, 199, 255, .4);
+  --constellation-core: rgba(250, 245, 255, .95);
+  --constellation-glow: rgba(177, 135, 255, .24);
+  --constellation-guide: rgba(244, 222, 255, .42);
+  color: rgba(230, 218, 255, .68);
+}
+
+.space-constellation--tone-2 {
+  --constellation-line: rgba(188, 236, 243, .4);
+  --constellation-core: rgba(244, 255, 255, .94);
+  --constellation-glow: rgba(112, 212, 230, .22);
+  --constellation-guide: rgba(208, 249, 255, .42);
+  color: rgba(214, 244, 248, .66);
+}
+
+.space-constellation-map {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.space-constellation-guide-lines {
+  opacity: .78;
+}
+
+.space-constellation-guide-lines polyline {
+  fill: none;
+  stroke: var(--constellation-guide);
+  stroke-width: 1.05;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+  filter: drop-shadow(0 0 2px var(--constellation-glow));
+}
+
+.space-constellation-lines line {
+  stroke: var(--constellation-line);
+  stroke-width: .78;
+  stroke-linecap: round;
+  stroke-dasharray: 145;
+  stroke-dashoffset: 145;
+  vector-effect: non-scaling-stroke;
+  animation: space-constellation-line-draw 1700ms cubic-bezier(.2, .7, .2, 1) var(--constellation-line-delay) forwards;
+}
+
+.space-constellation-star-halo {
+  fill: var(--constellation-glow);
+  opacity: .7;
+}
+
+.space-constellation-star-core {
+  fill: var(--constellation-core);
+  filter: drop-shadow(0 0 3px var(--constellation-core));
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: space-constellation-star-pulse var(--constellation-star-duration) ease-in-out var(--constellation-star-delay) infinite;
+}
+
+.space-constellation-glyph {
+  position: absolute;
+  z-index: 0;
+  left: 50%;
+  top: 50%;
+  color: var(--constellation-core);
+  font-family: "Segoe UI Symbol", "Noto Sans Symbols 2", sans-serif;
+  font-size: 36px;
+  font-weight: 600;
+  line-height: 1;
+  opacity: .1;
+  text-shadow: 0 0 14px var(--constellation-glow);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.space-constellation-label {
+  position: absolute;
+  left: 50%;
+  bottom: -2px;
+  padding: 2px 7px 3px;
+  border: 1px solid rgba(215, 229, 249, .22);
+  border-radius: 999px;
+  background: rgba(5, 9, 16, .56);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .04);
+  font-family: "Microsoft YaHei UI", "Segoe UI", sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 18px;
+  text-shadow: 0 0 8px rgba(173, 209, 255, .42);
+  white-space: nowrap;
+  transform: translateX(-50%);
+}
+
+@keyframes space-constellation-life {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 10px, 0) rotate(var(--constellation-rotation)) scale(.93);
+  }
+  10% {
+    opacity: .88;
+    transform: translate3d(0, 0, 0) rotate(var(--constellation-rotation)) scale(1);
+  }
+  72% {
+    opacity: .82;
+    transform: translate3d(var(--constellation-drift-x), var(--constellation-drift-y), 0) rotate(var(--constellation-rotation)) scale(1.012);
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(var(--constellation-drift-x), var(--constellation-drift-y), 0) rotate(var(--constellation-rotation)) scale(1.035);
+  }
+}
+
+@keyframes space-constellation-line-draw {
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes space-constellation-star-pulse {
+  0%, 100% { opacity: .58; transform: scale(.84); }
+  48% { opacity: 1; transform: scale(1.22); }
+}
+
+.space-black-hole-layer {
+  z-index: 3;
+  overflow: hidden;
+  contain: layout paint style;
+}
+
+.space-black-hole-layer,
+.space-black-hole-layer * {
+  pointer-events: none;
+}
+
+.space-black-hole {
+  position: absolute;
+  left: var(--black-hole-position-x, 76%);
+  top: var(--black-hole-position-y, 29%);
+  width: var(--black-hole-size, 360px);
+  height: var(--black-hole-size, 360px);
+  contain: layout paint style;
+  transform: translate3d(
+    calc(-50% + var(--space-black-hole-shift-x, 0px)),
+    calc(-50% + var(--space-black-hole-shift-y, 0px)),
+    0
+  );
+  transition: left 800ms cubic-bezier(.2, .65, .35, 1),
+    top 800ms cubic-bezier(.2, .65, .35, 1),
+    width 600ms ease,
+    height 600ms ease,
+    transform 1100ms cubic-bezier(.2, .65, .35, 1);
+}
+
+.space-black-hole-aura,
+.space-black-hole-lensing,
+.space-black-hole-core,
+.space-black-hole-photon-ring,
+.space-black-hole-disk-plane,
+.space-black-hole-particle-field {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+}
+
+.space-black-hole-aura {
+  z-index: 0;
+  width: 112%;
+  height: 82%;
+  border-radius: 50%;
+  opacity: calc(var(--black-hole-intensity, .58) * .48);
+  background: radial-gradient(ellipse at center,
+    rgba(226, 205, 177, .17) 0%,
+    rgba(188, 199, 214, .075) 28%,
+    rgba(113, 128, 149, .025) 54%,
+    transparent 76%);
+  filter: blur(12px);
+  mix-blend-mode: screen;
+  transform: translate(-50%, -50%) scale(.98);
+  animation: space-black-hole-breathe var(--black-hole-pulse-duration, 8200ms) ease-in-out infinite;
+}
+
+.space-black-hole-disk-plane {
+  width: 100%;
+  height: 100%;
+  transform-origin: center;
+  transform: translate(-50%, -50%) rotate(var(--black-hole-tilt, -8deg)) scaleY(var(--black-hole-disk-compression, .29));
+}
+
+.space-black-hole-disk-plane--back {
+  z-index: 1;
+  clip-path: inset(0 0 50% 0);
+}
+
+.space-black-hole-disk-plane--front {
+  z-index: 5;
+  clip-path: inset(50% 0 0 0);
+}
+
+.space-black-hole-disk-surface {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at center,
+      transparent 0 21%,
+      rgba(255, 248, 235, .92) 23%,
+      rgba(231, 205, 171, .62) 27%,
+      rgba(193, 163, 131, .3) 36%,
+      rgba(147, 155, 169, .11) 52%,
+      rgba(98, 112, 131, .035) 66%,
+      transparent 79%),
+    conic-gradient(from 28deg,
+      rgba(235, 220, 198, .2) 0 9%,
+      rgba(138, 150, 168, .035) 16%,
+      rgba(244, 228, 205, .26) 28%,
+      rgba(154, 135, 117, .06) 43%,
+      rgba(221, 230, 239, .12) 58%,
+      rgba(167, 143, 119, .08) 76%,
+      rgba(235, 220, 198, .2) 100%);
+  -webkit-mask-image: radial-gradient(circle,
+    transparent 0 20%,
+    #000 24%,
+    rgba(0, 0, 0, .94) 57%,
+    transparent 80%);
+  mask-image: radial-gradient(circle,
+    transparent 0 20%,
+    #000 24%,
+    rgba(0, 0, 0, .94) 57%,
+    transparent 80%);
+  transform: rotate(0deg);
+  animation: space-black-hole-spin var(--black-hole-spin-duration, 32000ms) linear infinite;
+}
+
+.space-black-hole-disk-surface::after {
+  position: absolute;
+  content: "";
+  inset: 12%;
+  border-radius: 50%;
+  opacity: .52;
+  background: repeating-radial-gradient(circle,
+    transparent 0 3.8%,
+    rgba(252, 242, 225, .28) 4.2% 4.8%,
+    transparent 5.2% 8.6%);
+  -webkit-mask-image: radial-gradient(circle, transparent 0 25%, #000 31%, rgba(0, 0, 0, .78) 61%, transparent 74%);
+  mask-image: radial-gradient(circle, transparent 0 25%, #000 31%, rgba(0, 0, 0, .78) 61%, transparent 74%);
+}
+
+.space-black-hole-disk-surface--back {
+  opacity: calc(var(--black-hole-intensity, .58) * .5);
+  filter: blur(1.45px) saturate(.66);
+}
+
+.space-black-hole-disk-surface--front {
+  opacity: calc(var(--black-hole-intensity, .58) * .86);
+  filter: blur(.92px) saturate(.72) drop-shadow(0 0 7px rgba(224, 199, 166, .17));
+}
+
+.space-black-hole-core {
+  z-index: 4;
+  width: 24%;
+  height: 24%;
+  border-radius: 50%;
+  background: radial-gradient(circle, #030405 0 64%, #010203 78%, #000 100%);
+  box-shadow:
+    0 0 0 2px rgba(0, 0, 0, .96),
+    0 0 15px 6px rgba(0, 0, 0, .94);
+  transform: translate(-50%, -50%);
+}
+
+.space-black-hole-core::before {
+  position: absolute;
+  content: "";
+  left: -26%;
+  top: -31%;
+  width: 152%;
+  height: 68%;
+  border-radius: 50%;
+  border-top: 1.2px solid rgba(250, 239, 220, .5);
+  opacity: calc(var(--black-hole-intensity, .58) * .72);
+  filter: blur(.48px) drop-shadow(0 0 3px rgba(226, 201, 170, .2));
+  transform: rotate(var(--black-hole-tilt, -8deg)) scaleY(.74);
+}
+
+.space-black-hole-core::after {
+  position: absolute;
+  content: "";
+  inset: -5%;
+  border-radius: 50%;
+  opacity: calc(var(--black-hole-intensity, .58) * .72);
+  background: conic-gradient(from 184deg,
+    transparent 0 24%,
+    rgba(248, 238, 221, .52) 34%,
+    rgba(205, 177, 145, .16) 45%,
+    transparent 54% 75%,
+    rgba(211, 224, 239, .22) 84%,
+    transparent 92% 100%);
+  -webkit-mask-image: radial-gradient(circle, transparent 0 83%, #000 87%, transparent 94%);
+  mask-image: radial-gradient(circle, transparent 0 83%, #000 87%, transparent 94%);
+  filter: blur(.45px);
+}
+
+.space-black-hole-lensing {
+  z-index: 6;
+  width: 43%;
+  height: 43%;
+  border-radius: 50%;
+  opacity: calc(var(--black-hole-intensity, .58) * .7);
+  transform: translate(-50%, -50%);
+}
+
+.space-black-hole-lensing::before {
+  position: absolute;
+  content: "";
+  left: 50%;
+  top: 9%;
+  width: 86%;
+  height: 34%;
+  border-radius: 50%;
+  border-top: 1px solid rgba(250, 241, 226, .42);
+  opacity: calc(var(--black-hole-intensity, .58) * .64);
+  filter: blur(.45px);
+  transform: translateX(-50%) rotate(var(--black-hole-tilt, -8deg)) scaleY(.68);
+}
+
+.space-black-hole-lensing::after {
+  position: absolute;
+  content: "";
+  left: 50%;
+  bottom: 9%;
+  width: 72%;
+  height: 28%;
+  border-radius: 50%;
+  border-bottom: 1px solid rgba(202, 217, 233, .18);
+  opacity: calc(var(--black-hole-intensity, .58) * .44);
+  filter: blur(.55px);
+  transform: translateX(-50%) rotate(var(--black-hole-tilt, -8deg)) scaleY(.7);
+}
+
+.space-black-hole-photon-ring {
+  z-index: 7;
+  width: 28.5%;
+  height: 28.5%;
+  border-radius: 50%;
+  opacity: calc(var(--black-hole-intensity, .58) * .78);
+  background: conic-gradient(from 120deg,
+    transparent 0 18%,
+    rgba(235, 223, 205, .2) 28%,
+    rgba(255, 249, 237, .82) 43%,
+    rgba(205, 180, 148, .16) 61%,
+    transparent 78% 100%);
+  -webkit-mask-image: radial-gradient(circle, transparent 0 84%, #000 87%, #000 90%, transparent 94%);
+  mask-image: radial-gradient(circle, transparent 0 84%, #000 87%, #000 90%, transparent 94%);
+  filter: blur(.35px) drop-shadow(0 0 3px rgba(238, 221, 197, .2));
+  transform: translate(-50%, -50%) rotate(0deg);
+  animation: space-black-hole-counter-spin var(--black-hole-counter-spin-duration, 21000ms) linear infinite;
+}
+
+.space-black-hole-particle-field {
+  z-index: 3;
+  width: 100%;
+  height: 100%;
+  transform: translate(-50%, -50%) rotate(var(--black-hole-tilt, -8deg)) scaleY(var(--black-hole-disk-compression, .29));
+}
+
+.space-black-hole-orbit {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 1px;
+  height: 1px;
+  transform-origin: 0 0;
+  transform: rotate(var(--black-hole-orbit-start));
+  animation: space-black-hole-orbit var(--black-hole-orbit-duration) linear var(--black-hole-orbit-delay) infinite;
+}
+
+.space-black-hole-particle {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: block;
+  width: var(--black-hole-particle-size);
+  height: var(--black-hole-particle-size);
+  border-radius: 50%;
+  opacity: calc(var(--black-hole-particle-opacity) * var(--black-hole-intensity, .58));
+  background: var(--black-hole-particle-color);
+  box-shadow: 0 0 4px var(--black-hole-particle-color);
+  transform: translateX(var(--black-hole-particle-radius)) scaleY(var(--black-hole-particle-counter-scale));
+}
+
+@keyframes space-black-hole-spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes space-black-hole-counter-spin {
+  to { transform: translate(-50%, -50%) rotate(-360deg); }
+}
+
+@keyframes space-black-hole-breathe {
+  0%, 100% {
+    opacity: calc(var(--black-hole-intensity, .58) * .38);
+    transform: translate(-50%, -50%) scale(.98);
+  }
+
+  50% {
+    opacity: calc(var(--black-hole-intensity, .58) * .52);
+    transform: translate(-50%, -50%) scale(1.025);
+  }
+}
+
+@keyframes space-black-hole-orbit {
+  from { transform: rotate(var(--black-hole-orbit-start)); }
+  to { transform: rotate(calc(var(--black-hole-orbit-start) + 360deg)); }
+}
+
+.space-meteor-layer,
+.space-hero-layer {
+  z-index: 4;
+  overflow: hidden;
+}
+
+.space-comet,
+.space-comet * {
+  pointer-events: none;
+}
+
+.space-comet {
+  position: absolute;
+  left: var(--start-x);
+  top: var(--start-y);
+  width: 0;
+  height: 0;
+  opacity: 0;
+  transform-origin: 0 0;
+  will-change: transform, opacity;
+  animation: space-comet-flight var(--comet-duration) cubic-bezier(.22, .58, .3, 1) forwards;
+}
+
+.space-comet-body {
+  position: relative;
+  width: 0;
+  height: 0;
+  filter: brightness(var(--comet-brightness));
+}
+
+.space-comet-tail,
+.space-comet-tail::before,
+.space-comet-tail::after {
+  position: absolute;
+  right: calc(var(--comet-head-size) * .14);
+  top: 0;
+  transform: translateY(-50%);
+  transform-origin: right center;
+  pointer-events: none;
+}
+
+.space-comet-tail {
+  width: var(--comet-tail-length);
+  height: var(--comet-tail-height);
+  border-radius: 100% 18% 18% 100%;
+  background: linear-gradient(90deg, transparent 0%, rgba(196, 211, 232, .025) 20%, rgba(222, 233, 248, .16) 60%, rgba(249, 252, 255, .68) 100%);
+  clip-path: ellipse(100% 50% at 100% 50%);
+  filter: blur(.5px) drop-shadow(0 0 4px rgba(220, 233, 250, .28));
+}
+
+.space-comet-tail::before {
+  content: "";
+  right: 0;
+  width: 82%;
+  height: 34%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, transparent 0%, rgba(230, 239, 250, .16) 40%, rgba(255, 255, 255, .86) 100%);
+  clip-path: ellipse(100% 50% at 100% 50%);
+  filter: blur(.42px);
+}
+
+.space-comet-tail::after {
+  content: "";
+  right: -1px;
+  width: 112%;
+  height: 250%;
+  border-radius: inherit;
+  opacity: .34;
+  background: linear-gradient(90deg, transparent 0%, rgba(204, 220, 241, .035) 26%, rgba(224, 236, 250, .26) 100%);
+  clip-path: ellipse(100% 50% at 100% 50%);
+  filter: blur(2.8px);
+}
+
+.space-comet-glow {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: var(--comet-glow-size);
+  height: var(--comet-glow-size);
+  border-radius: 50%;
+  opacity: .7;
+  background: radial-gradient(circle, rgba(255, 255, 255, .58) 0%, rgba(228, 239, 253, .24) 28%, rgba(205, 222, 245, .08) 50%, transparent 72%);
+  filter: blur(1.2px);
+  transform: translate(-50%, -50%);
+}
+
+.space-comet-glow::after {
+  position: absolute;
+  content: "";
+  right: 34%;
+  top: 50%;
+  width: 120%;
+  height: 54%;
+  border-radius: 100% 0 0 100%;
+  opacity: .42;
+  background: linear-gradient(90deg, transparent, rgba(228, 238, 252, .34));
+  filter: blur(2.2px);
+  transform: translateY(-50%);
+}
+
+.space-comet-head {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: var(--comet-head-size);
+  height: var(--comet-head-size);
+  border-radius: 50%;
+  background: radial-gradient(circle at 40% 38%, #fff 0%, #fff 18%, rgba(243, 248, 255, .94) 32%, rgba(214, 229, 248, .48) 54%, rgba(197, 216, 242, .08) 72%, transparent 78%);
+  box-shadow: 0 0 5px rgba(240, 247, 255, .82), 0 0 12px rgba(214, 229, 249, .34);
+  transform: translate(-50%, -50%);
+}
+
+.space-comet--rare .space-comet-tail {
+  background: linear-gradient(90deg, transparent 0%, rgba(202, 218, 238, .03) 18%, rgba(225, 236, 250, .15) 54%, rgba(244, 250, 255, .46) 100%);
+  filter: blur(.65px) drop-shadow(0 0 7px rgba(226, 238, 253, .34));
+}
+
+.space-comet--rare .space-comet-tail::before {
+  height: 18%;
+  opacity: .56;
+  filter: blur(.48px);
+}
+
+.space-comet--rare .space-comet-tail::after {
+  height: 360%;
+  opacity: .58;
+  background: linear-gradient(90deg, transparent 0%, rgba(204, 220, 241, .025) 22%, rgba(224, 236, 250, .3) 100%);
+  filter: blur(5px);
+}
+
+.space-comet--rare .space-comet-glow {
+  opacity: .68;
+  filter: blur(2.1px);
+}
+
+.space-comet--rare .space-comet-glow::after {
+  width: 165%;
+  height: 68%;
+  opacity: .38;
+  filter: blur(3px);
+}
+
+.space-comet--rare .space-comet-head {
+  box-shadow: 0 0 7px rgba(248, 251, 255, .86), 0 0 19px rgba(216, 231, 251, .32);
+}
+
+@keyframes space-comet-flight {
+  0% {
+    opacity: 0;
+    transform: rotate(var(--comet-angle)) translate3d(0, 0, 0) scale(var(--comet-scale));
+  }
+
+  11% {
+    opacity: var(--comet-opacity);
+    transform: rotate(var(--comet-angle)) translate3d(var(--comet-entry-distance), 0, 0) scale(var(--comet-scale));
+  }
+
+  74% {
+    opacity: var(--comet-opacity);
+  }
+
+  100% {
+    opacity: 0;
+    transform: rotate(var(--comet-angle)) translate3d(var(--comet-distance), 0, 0) scale(var(--comet-scale));
+  }
+}
+
+#space-environment.space-no-twinkle .space-star-core {
+  animation: none;
+  opacity: var(--star-min-opacity);
+  transform: none;
+}
+
+#space-environment.space-no-drift .space-star--drift,
+#space-environment.space-low-power .space-star--drift {
+  animation: none;
+  transform: none;
+}
+
+#space-environment.space-paused .space-star-core,
+#space-environment.space-paused .space-star--drift,
+#space-environment.space-paused .space-star-field,
+#space-environment.space-paused .space-constellation,
+#space-environment.space-paused .space-constellation *,
+#space-environment.space-paused .space-black-hole * {
+  animation-play-state: paused;
+}
+
+#space-environment.space-black-hole-static .space-black-hole-aura,
+#space-environment.space-black-hole-static .space-black-hole-lensing,
+#space-environment.space-black-hole-static .space-black-hole-photon-ring,
+#space-environment.space-black-hole-static .space-black-hole-disk-surface,
+#space-environment.space-black-hole-static .space-black-hole-orbit {
+  animation: none;
+}
+
+#space-environment.space-low-power .space-black-hole-particle-field {
+  display: none;
+}
+
+#space-environment.space-low-power .space-star-field {
+  animation: none;
+  will-change: auto;
+}
+
+#space-environment.space-low-power .space-star-core {
+  animation: none;
+  opacity: var(--star-min-opacity);
+  transform: none;
+}
+
+/* Keep the light astronomy accents visible while the fluid layer is reduced. */
+#space-environment.space-host-low-power .space-constellation {
+  filter: none;
+}
+
+#space-environment.space-host-low-power .space-constellation-lines line {
+  animation-duration: 2300ms;
+}
+
+#space-environment.space-host-low-power .space-constellation-star-core {
+  animation-duration: 3000ms;
+}
+
+@media (max-width: 1100px) {
+  .space-background {
+    opacity: min(var(--space-background-opacity, .22), .18);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .space-background,
+  .space-star-layer {
+    transition: none;
+    transform: none;
+  }
+
+  .space-black-hole {
+    transition: none;
+  }
+
+  .space-star-core,
+  .space-star--drift {
+    animation: none;
+    opacity: var(--star-min-opacity);
+    transform: none;
+  }
+
+  .space-black-hole-aura,
+  .space-black-hole-lensing,
+  .space-black-hole-photon-ring,
+  .space-black-hole-disk-surface,
+  .space-black-hole-orbit {
+    animation: none;
+  }
+
+  /* Keep explicitly enabled astronomy accents visible. Only the expensive
+     star twinkle, drift and black-hole motion are reduced above. */
+  #space-environment.space-reduced-motion .space-constellation-layer,
+  #space-environment.space-reduced-motion .space-meteor-layer,
+  #space-environment.space-reduced-motion .space-hero-layer {
+    display: block;
+  }
+
+  #space-environment.space-reduced-motion .space-constellation-lines line {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
+
+  #space-environment.space-reduced-motion .space-constellation-star-core {
+    animation: none;
+    opacity: .88;
+    transform: none;
+  }
+
+  #space-environment.space-reduced-motion .space-comet {
+    animation-duration: 1800ms;
+  }
+}

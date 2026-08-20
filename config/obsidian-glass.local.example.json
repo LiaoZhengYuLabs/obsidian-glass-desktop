@@ -1,0 +1,43 @@
+{
+  "profileName": "obsidian-glass-local-components",
+  "taskName": "Obsidian Glass Desktop",
+  "projectRoot": ".",
+  "startupDelaySeconds": 2,
+  "useScheduledTask": true,
+  "useStartupFolderShortcut": false,
+  "notes": "Copy this file to a private profile only after checking MyDockFinder, Seelen UI, Lively Wallpaper, fonts, and optional speech assets.",
+  "components": [
+    {
+      "id": "dashboard",
+      "displayName": "Ambient dashboard and system controls",
+      "enabled": true,
+      "script": "src/components/dashboard/start.ps1",
+      "arguments": ["-NoStartup"],
+      "delaySeconds": 0
+    },
+    {
+      "id": "sidebar",
+      "displayName": "Left application rail and live preview",
+      "enabled": true,
+      "script": "src/components/sidebar/start.ps1",
+      "arguments": ["-NoStartup"],
+      "delaySeconds": 1
+    },
+    {
+      "id": "dock",
+      "displayName": "Obsidian AI Dock",
+      "enabled": true,
+      "script": "src/components/dock/start.ps1",
+      "arguments": ["-NoStartup"],
+      "delaySeconds": 2
+    },
+    {
+      "id": "ambient-dock-visibility",
+      "displayName": "Dock visibility controller",
+      "enabled": true,
+      "script": "src/components/ambient/start.ps1",
+      "arguments": [],
+      "delaySeconds": 3
+    }
+  ]
+}

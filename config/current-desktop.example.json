@@ -1,0 +1,43 @@
+{
+  "profileName": "obsidian-glass-compatible-example",
+  "taskName": "Obsidian Glass Desktop",
+  "projectRoot": ".",
+  "startupDelaySeconds": 2,
+  "useScheduledTask": true,
+  "useStartupFolderShortcut": false,
+  "notes": "All entries are disabled by default. Review each external dependency before enabling.",
+  "components": [
+    {
+      "id": "dashboard",
+      "displayName": "Obsidian Glass Dashboard",
+      "enabled": false,
+      "script": "src/components/dashboard/start.ps1",
+      "arguments": ["-NoStartup"],
+      "delaySeconds": 0
+    },
+    {
+      "id": "sidebar",
+      "displayName": "Obsidian Glass Stage rail",
+      "enabled": false,
+      "script": "src/components/sidebar/start.ps1",
+      "arguments": ["-NoStartup"],
+      "delaySeconds": 2
+    },
+    {
+      "id": "dock",
+      "displayName": "Obsidian Glass Dock",
+      "enabled": false,
+      "script": "src/components/dock/start.ps1",
+      "arguments": ["-NoStartup"],
+      "delaySeconds": 3
+    },
+    {
+      "id": "ambient",
+      "displayName": "Ambient Dock visibility",
+      "enabled": false,
+      "script": "src/components/ambient/start.ps1",
+      "arguments": [],
+      "delaySeconds": 5
+    }
+  ]
+}

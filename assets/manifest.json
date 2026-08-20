@@ -1,0 +1,76 @@
+{
+  "schemaVersion": 1,
+  "policy": "source-and-metadata; private or unverified media stays excluded",
+  "items": [
+    {
+      "id": "chatgpt",
+      "displayName": "ChatGPT",
+      "kind": "application-icon",
+      "source": "src/components/sidebar/assets/ChatGPT.ico",
+      "publishStatus": "review-license-before-publish"
+    },
+    {
+      "id": "codex",
+      "displayName": "Codex",
+      "kind": "application-icon",
+      "source": "src/components/sidebar/assets/Codex.ico",
+      "publishStatus": "review-license-before-publish"
+    },
+    {
+      "id": "github",
+      "displayName": "GitHub",
+      "kind": "application-icon",
+      "source": "src/components/sidebar/assets/GitHub.ico",
+      "publishStatus": "review-license-before-publish"
+    },
+    {
+      "id": "chrome",
+      "displayName": "Google Chrome",
+      "kind": "application-icon",
+      "source": "src/components/sidebar/assets/Google Chrome.ico",
+      "publishStatus": "review-license-before-publish"
+    },
+    {
+      "id": "vscode",
+      "displayName": "Visual Studio Code",
+      "kind": "application-icon",
+      "source": "src/components/sidebar/assets/Visual Studio Code.ico",
+      "publishStatus": "review-license-before-publish"
+    },
+    {
+      "id": "taiji-background",
+      "displayName": "Taiji background",
+      "kind": "wallpaper",
+      "source": "user-supplied",
+      "publishStatus": "exclude-until-rights-confirmed"
+    },
+    {
+      "id": "animal-pets",
+      "displayName": "Animal and pet animations",
+      "kind": "community-sprite-binaries",
+      "source": "Petdex-or-user-supplied",
+      "publishStatus": "excluded-from-public-commit; fetch-to-local-cache-only"
+    },
+    {
+      "id": "music-and-subtitles",
+      "displayName": "Music, lyrics, and translations",
+      "kind": "media-assets",
+      "source": "user-supplied-or-service-derived",
+      "publishStatus": "exclude"
+    },
+    {
+      "id": "deep-space-wallpaper",
+      "displayName": "Deep-space fluid wallpaper",
+      "kind": "wallpaper-source",
+      "source": "src/components/wallpaper",
+      "publishStatus": "included-with-upstream-attribution"
+    },
+    {
+      "id": "animal-trail-catalog",
+      "displayName": "Animal Trail System and Petdex catalogue",
+      "kind": "animation-engine-and-metadata",
+      "source": "src/components/wallpaper/animal-trail",
+      "publishStatus": "engine-and-metadata-included; full-sprite-cache-optional"
+    }
+  ]
+}
