@@ -1,4 +1,4 @@
-# macOS 桌面小组件 QA
+﻿# macOS 桌面小组件 QA
 
 日期：2026-07-14
 
@@ -31,3 +31,4 @@
 - `restore_mac_widget_reference.ps1` 可恢复本次小组件与 Dock 配置，且不处理应用边栏。
 
 最终结果：通过。
+

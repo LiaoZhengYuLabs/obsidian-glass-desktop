@@ -1,4 +1,4 @@
-(function () {
+﻿(function () {
   "use strict";
 
   // Central tuning surface for the UI desktop deep-space layer.

@@ -1,14 +1,11 @@
 ﻿$ErrorActionPreference = "Stop"
 $projectRoot = Split-Path -Parent $MyInvocation.MyCommand.Path
 $mainScript = $projectRoot + "\ObsidianAIDock.ps1"
-$pathsHelper = Join-Path (Split-Path -Parent (Split-Path -Parent $projectRoot)) "lib\ObsidianGlass.Paths.ps1"
-if (Test-Path -LiteralPath $pathsHelper -PathType Leaf) { . $pathsHelper }
-$myDockRoot = Get-ObsidianGlassDockRoot
+$myDockRoot = "C:\Program Files (x86)\Steam\steamapps\common\MyDockFinder"
 
 $processes = @(Get-CimInstance Win32_Process -Filter "Name='powershell.exe'" -ErrorAction SilentlyContinue |
     Where-Object { $_.CommandLine -and $_.CommandLine.IndexOf($mainScript, [StringComparison]::OrdinalIgnoreCase) -ge 0 })
-$iconPath = if (![string]::IsNullOrWhiteSpace($myDockRoot)) { Join-Path $myDockRoot 'ico.ini' } else { $null }
-$layoutText = if (![string]::IsNullOrWhiteSpace($iconPath) -and (Test-Path -LiteralPath $iconPath -PathType Leaf)) { [IO.File]::ReadAllText($iconPath, [Text.Encoding]::UTF8) } else { '' }
+$layoutText = [IO.File]::ReadAllText($myDockRoot + "\ico.ini", [Text.Encoding]::UTF8)
 $fixedCount = ([regex]::Matches($layoutText, "(?m)^filepath=.+$")).Count
 $activeCount = 0
 $pageCount = 0
@@ -32,6 +29,6 @@ $startupLink = [Environment]::GetFolderPath("Startup") + "\Obsidian AI Dock.lnk"
     RetainedPages = $pageCount
     StartupEnabled = (Test-Path -LiteralPath $startupLink)
     MyDockFinderRunning = ($null -ne (Get-Process Dock_64 -ErrorAction SilentlyContinue))
-    ConfigHash = if (![string]::IsNullOrWhiteSpace($myDockRoot) -and (Test-Path -LiteralPath (Join-Path $myDockRoot 'config.ini') -PathType Leaf)) { (Get-FileHash (Join-Path $myDockRoot 'config.ini') -Algorithm SHA256).Hash } else { '' }
-    IconLayoutHash = if (![string]::IsNullOrWhiteSpace($iconPath) -and (Test-Path -LiteralPath $iconPath -PathType Leaf)) { (Get-FileHash $iconPath -Algorithm SHA256).Hash } else { '' }
+    ConfigHash = (Get-FileHash ($myDockRoot + "\config.ini") -Algorithm SHA256).Hash
+    IconLayoutHash = (Get-FileHash ($myDockRoot + "\ico.ini") -Algorithm SHA256).Hash
 } | Format-List

@@ -1,13 +1,92 @@
-# Animal Trail System
+﻿# 动态动物轨迹系统（Animal Trail System）
 
-This package keeps the local animal-trail renderer, eight starter presets, and the full Petdex creature catalogue. The renderer caps active animals at 40 and keeps the catalogue limit at 80 so the wallpaper remains responsive on ordinary Windows 11 hardware.
+这是现有 Lively 太极流体壁纸的增量视觉层。它不创建第二个桌面窗口，而是在原网页中增加一个鼠标穿透 Canvas，并由原 `requestAnimationFrame` 统一驱动。
 
-## Included
+## 当前效果（2026-08-16 UI Desktop 版）
 
-- `animal-trail.js`: canvas renderer, idle play, cursor interaction, and performance caps.
-- `catalog/creatures.js` and `catalog/creatures.json`: a 1,593-entry catalogue snapshot with Petdex source URLs.
-- `assets/`: intentionally empty in the public repository. It is the local cache location for eight starter sprites when you synchronize or install them yourself.
+- 生成方式为「20 只闲置批次 + 鼠标轨迹」：鼠标静止约 2.6 秒后，桌面自动生成 20 只互不重复的小动物；单只消失后不补位，整批全部自然离场后才生成下一批。
+- 自动批次采用整轮不放回：已出现过的视觉与名称会持续排除，约 1,571 个独特视觉轮完后才重置；重置时仍保护上一批，下一批 20 只不会与它重复。候选不足时先异步换入新的 Petdex 精灵，再整批投放。
+- 按移动距离生成：慢速约每 80～140 px 一只（以走路、待机为主），正常速度约每 45～80 px 一只（奔跑、跳跃），高速甩动时一次生成一小组（3～8 只，含冲刺和翻滚），并有节流保护。
+- 动物沿真实鼠标轨迹（Catmull-Rom 平滑）移动：大部分向前追随光轨头部并保持各自跟随间距，部分反向折返，部分沿轨迹来回往返；向左移动时自动水平翻转，转弯自然转向。
+- 鼠标停止后：轨迹动物继续活动，闲置批次动物会自主走动、玩耍、回头或睡觉，随后化为紫蓝粒子逐只淡出。
+- 数量与性能：闲置动物固定 20 只；移动鼠标后轨迹动物可继续叠加，两类动物合计硬上限 40 只。对象池复用，达到上限时优先送走轨迹动物，保护当前闲置批次的完整生命周期。
+- 群体行为：持续硬分离防重叠，相遇的两只动物会短暂停下打招呼，高速组共享队伍编号形成小队追逐。
+- 特殊手势：画圆（需真实绕圈，累计转角约一整圈）形成 3～5 秒动物环后散开；快速左右滑动让动物加速并在两端折返，同时生成一队快跑动物；快速上滑触发跳跃；快速下滑让部分动物向底边聚集后化为粒子消散。识别不确定时按普通轨迹处理。
+- Petdex 完整 `creature` 目录共 1,593 个生物已保存在本地，运行时以精灵哈希、名称、活动状态三层判重并无放回轮换；候选耗尽时才优雅复用已加载物种。动态精灵缓存 20 张（狂欢 24 张）+ 八只主角，并按行记录真实有效帧索引，跳过空白格。
+- 稳定渲染：关闭 WebView2 透明画布的 `desynchronized` 中间态提交，使每帧清屏和重绘一起呈现，避免整层动物周期性闪烁。
+- 性能保护：等待下一批且无可见内容时跳过重绘；动物层按互动 / 静置使用 45 / 24 FPS，流体层按指针 / 音频 / 空闲使用 60 / 48 / 45 FPS；FPS 过低自动降载（关闭描边光效、降低分辨率）；全屏应用或游戏时复用 Lively 暂停事件立即清屏。
 
-The full catalogue sprite cache is about 3 GB (`catalog/sync-report.json`). No community sprite binaries are committed to the public repository. Run `tools/Sync-AnimalTrailAssets.ps1 -DownloadFromPetdex` to fetch only the eight starter sprites into your own local cache, or add `-IncludeAllCatalogAssets -Force` only when a local full cache is needed. You can instead set `OBSIDIAN_GLASS_ANIMAL_SOURCE` to an existing cache. This keeps the default checkout fast and avoids redistributing assets whose individual creator terms are not represented by the wallpaper MIT notice.
+## 安装 / 重新部署
 
-The catalogue metadata is retained for discovery. Public checkouts can render an available catalog sprite from its original URL; for offline use, synchronize it into the local cache. Users should verify the rights for any community sprite before publishing or redistributing it.
+```powershell
+powershell -ExecutionPolicy Bypass -File .\AnimalTrailSystem\install_animal_trail.ps1
+```
+
+项目已直接部署到当前桌面壁纸。此命令用于以后重新安装或修复（会重新拷贝文件并自动重载 Lively 壁纸）。
+
+## 控制
+
+在 Lively 中打开当前壁纸的“自定义”，可调整：
+
+- 总开关、场景模式（宁静 / 标准 / 动物狂欢 / 自定义，默认标准）、生物轮换、密度、自定义上限
+- 尺寸、生成频率、移动速度、动作丰富度、环境光
+- 沿轨迹往返、群体行为、鼠标速度联动、太极粒子融合、颜色联动
+- 全屏自动暂停、夜间低功耗、一键清除、恢复默认
+
+Lively 会按屏幕持久化这些值，重启后设置保留。动物层始终位于壁纸中（桌面背景层），天然“只在桌面显示”，不遮挡窗口、Dock、组件，不出现在 Alt+Tab。
+
+## 动态深空环境
+
+当前系统统一称为 **UI 桌面（UI Desktop）**。它包含独立的 `space-environment/` 背景模块，位于流体背景与动物 Canvas 之间，所有节点都保持 `pointer-events: none`：
+
+- 远景、中景、近景三层星空分别使用 1～2px、2～3px、3～5px 尺寸；每颗星独立闪烁，星空整体还会进行 74 秒缓慢流动。
+- 约 38% 的动态星点以 12～34 秒周期漂移 4～18px；显式开启“深空低功耗”或系统减少动态效果时会停止高动态层。自动低帧保护只降低流体与黑洞粒子，仍保留轻量星座和流星。
+- 十二星座按白羊至双鱼顺序轮换，每 6 秒生成一个，使用 18 / 22 / 26 / 30 / 34 秒差异化生命周期，原有同屏上限保持为 5。星点位置与连线采用 d3-celestial / Stellarium 的真实西方星座线数据投影，星点大小按恒星视星等区分。
+- 每个星座在真实星点层之外增加轻量辨识轮廓、星座符号和中文名/三字母缩写标签；轮廓只帮助快速识别，不替换原始星点与连线数据。
+- 原有流星调度保持不变（每 1.8～4.2 秒、原有 2～3 颗批次、原有 7 颗上限）；另外增加独立的轻量附加通道，最多增加 2 颗流星和 1 个额外星座，不占用原有通道上限。
+- 平衡性能模式会在空闲时把流体渲染限制到 45 FPS，音频活动时限制到 48 FPS；鼠标交互恢复 60 FPS。持续掉帧时会自动关闭高成本后处理、降低流体模拟分辨率，并在高 DPI 屏幕上临时把流体后备缓冲限制到 1.25 倍；稳定恢复后自动还原，不改变原有画面参数。
+- 自适应保护同步刷新 GPU shader 关键字，避免逻辑上关闭 Bloom / Sunrays 后仍然保留旧的后处理变体；壁纸暂停事件的数据异常时也会被安全忽略，不会打断主循环。
+- 普通浏览器页面隐藏、Lively 明确暂停、全屏暂停或模块销毁时，会清理星座、流星、计时器、动画帧和事件监听器，避免长期运行累积。Lively 的壁纸 WebView 虽然处于隐藏窗口，也会继续显示轻量星座与流星；只有 Lively 自己发出暂停事件时才停止。
+- 壁纸启动时会先放入两组轻量星座，随后按 6 秒节奏轮换完整十二星座，避免开机后一段时间只有星点。
+
+在 Lively 当前壁纸的“自定义”中可直接调整：
+
+- 星星数量：`动态星星数量`
+- 星星闪烁强度：`星星闪烁强度`
+- 十二星座：`十二星座轮换`
+- 彗星频率：`彗星出现频率`，数值越高，等待时间越短
+- 彗星大小：`彗星整体大小`
+- 大彗星概率：`大彗星出现概率`
+
+代码级参数集中在 `deploy/wallpaper/space-environment/space-config.js`；视觉材质集中在同目录的 `space-environment.css`，运行时生成与清理逻辑位于 `space-environment.js`。附加通道使用 `extraComets` 与 `extraConstellations`，不会覆盖原有参数。
+
+## 验证
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\AnimalTrailSystem\verify_animal_trail.ps1
+```
+
+验证会检查完整目录数量、轨迹生成运行时、指针桥接、单一动画循环、星座生命周期、流星群、暂停事件、持久化控制项和额外进程。无头视觉与 12 星座轮换测试位于 `tests/zodiac-sky-runtime-check.js`；新增通道的 Playwright 验收位于 `tests/meteor-constellation-check.js`。动物长测中的模式上限按“活动对象减去正在柔和退出对象”计算，避免把过渡动画误判为超限。
+
+## 恢复
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\AnimalTrailSystem\restore_animal_trail.ps1
+```
+
+恢复脚本会放回修改前备份（原始无动物壁纸），移除动物资源目录并重载 Lively 壁纸播放器。若只想回到“随机批次”旧版动物系统，使用 `backups\trail-emergence-backup-20260726\` 中的文件覆盖回去即可（详见 `CHANGES-trail-emergence-20260726.md`）。
+
+## 目录
+
+- `runtime/animal-trail.js`：闲置批次、轨迹生成、路径跟随、对象池、动作状态机、手势、防重叠、环境光、分级渲染与性能管理。
+- `deploy/wallpaper/space-environment/`：三层流动星空、十二星座、流星群、摄影背景融合、配置与完整生命周期管理。
+- `runtime/catalog/`：1,593 个 Petdex 生物、元数据、完整来源索引和同步报告。
+- `deploy/wallpaper/`：在原壁纸基础上制作的最小集成文件。
+- `backups/`：修改前完整壁纸与个性化参数（含 `trail-emergence-backup-20260726` 旧版动物系统备份）。
+- `audit/`：桌面与浏览器渲染证据。
+- `tests/`：无头浏览器交互与画布像素测试（轨迹生成版）。
+- `logs/`：安装、恢复和验收报告。
+
+## 资源说明
+
+Petdex 目录与文件来自 `https://petdex.dev/`。资源由社区提交者提供，来源和提交者保存在 `runtime/catalog/creatures.json`。这些资源仅在本机个人桌面中使用；再分发前应逐项确认提交者声明的许可。

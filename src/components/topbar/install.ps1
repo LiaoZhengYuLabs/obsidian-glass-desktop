@@ -2,43 +2,38 @@
 
 $projectRoot = $PSScriptRoot
 $installRoot = "$env:LOCALAPPDATA\ObsidianDesktopMediaCenter"
-$pathsHelper = Join-Path (Split-Path -Parent (Split-Path -Parent $projectRoot)) "lib\ObsidianGlass.Paths.ps1"
-if (Test-Path -LiteralPath $pathsHelper -PathType Leaf) { . $pathsHelper }
 $seelenRoot = "$env:APPDATA\com.seelen.seelen-ui"
 $toolbarPath = "$seelenRoot\data\seelen-fancy-toolbar\state.yml"
 if (-not (Test-Path -LiteralPath $toolbarPath)) { $toolbarPath = "$seelenRoot\toolbar_items.yml" }
 $baseToolbarPath = "$seelenRoot\profiles\base\toolbar.yml"
 $seelenSettingsPath = "$seelenRoot\settings.json"
-$dockRoot = Get-ObsidianGlassDockRoot
-$dockConfig = if (![string]::IsNullOrWhiteSpace($dockRoot)) { Join-Path $dockRoot 'config.ini' } else { $null }
-$dockIconConfig = if (![string]::IsNullOrWhiteSpace($dockRoot)) { Join-Path $dockRoot 'ico.ini' } else { $null }
-$dockIconBackup = if (![string]::IsNullOrWhiteSpace($dockRoot)) { Join-Path $dockRoot 'ico_bak.ini' } else { $null }
-$backupRoot = Join-Path (Join-Path $env:LOCALAPPDATA 'ObsidianGlassDesktop') ('media-center-backups\' + (Get-Date -Format 'yyyyMMdd-HHmmss'))
-$latestBackup = Join-Path (Join-Path $env:LOCALAPPDATA 'ObsidianGlassDesktop') 'latest-media-center-backup.txt'
+$dockRoot = 'C:\Program Files (x86)\Steam\steamapps\common\MyDockFinder'
+$dockConfig = "$dockRoot\config.ini"
+$dockIconConfig = "$dockRoot\ico.ini"
+$dockIconBackup = "$dockRoot\ico_bak.ini"
+$backupRoot = "$projectRoot\backups\$(Get-Date -Format 'yyyyMMdd-HHmmss')"
+$latestBackup = "$projectRoot\latest-backup.txt"
 
 if (-not (Test-Path -LiteralPath $toolbarPath)) { throw "Seelen toolbar not found: $toolbarPath" }
 if (-not (Test-Path -LiteralPath $baseToolbarPath)) { throw "Seelen base toolbar not found: $baseToolbarPath" }
-if (![string]::IsNullOrWhiteSpace($dockConfig) -and -not (Test-Path -LiteralPath $dockConfig -PathType Leaf)) { throw "MyDockFinder config not found: $dockConfig" }
+if (-not (Test-Path -LiteralPath $dockConfig)) { throw "MyDockFinder config not found: $dockConfig" }
 
 New-Item -ItemType Directory -Force -Path $installRoot, $backupRoot | Out-Null
 
 Copy-Item -LiteralPath $toolbarPath -Destination "$backupRoot\active-toolbar.yml" -Force
 Copy-Item -LiteralPath $baseToolbarPath -Destination "$backupRoot\base-toolbar.yml" -Force
 if (Test-Path -LiteralPath $seelenSettingsPath) { Copy-Item -LiteralPath $seelenSettingsPath -Destination "$backupRoot\seelen-settings.json" -Force }
-if (![string]::IsNullOrWhiteSpace($dockConfig) -and (Test-Path -LiteralPath $dockConfig -PathType Leaf)) {
-    Copy-Item -LiteralPath $dockConfig -Destination "$backupRoot\mydock-config.ini" -Force
-}
+Copy-Item -LiteralPath $dockConfig -Destination "$backupRoot\mydock-config.ini" -Force
 if (Test-Path -LiteralPath $dockIconConfig) { Copy-Item -LiteralPath $dockIconConfig -Destination "$backupRoot\ico.ini" -Force }
 if (Test-Path -LiteralPath $dockIconBackup) { Copy-Item -LiteralPath $dockIconBackup -Destination "$backupRoot\ico_bak.ini" -Force }
 
 Copy-Item -LiteralPath "$projectRoot\DesktopMediaCenter.ps1" -Destination "$installRoot\DesktopMediaCenter.ps1" -Force
 Copy-Item -LiteralPath "$projectRoot\MediaCenter.xaml" -Destination "$installRoot\MediaCenter.xaml" -Force
-foreach ($optionalFile in @('open-screenshot.cmd','open-recording.cmd','open-camera.cmd','toggle-language.ps1','toggle-language.cmd')) {
-    $optionalSource = Join-Path $projectRoot $optionalFile
-    if (Test-Path -LiteralPath $optionalSource -PathType Leaf) {
-        Copy-Item -LiteralPath $optionalSource -Destination (Join-Path $installRoot $optionalFile) -Force
-    }
-}
+Copy-Item -LiteralPath "$projectRoot\open-screenshot.cmd" -Destination "$installRoot\open-screenshot.cmd" -Force
+Copy-Item -LiteralPath "$projectRoot\open-recording.cmd" -Destination "$installRoot\open-recording.cmd" -Force
+Copy-Item -LiteralPath "$projectRoot\open-camera.cmd" -Destination "$installRoot\open-camera.cmd" -Force
+Copy-Item -LiteralPath "$projectRoot\toggle-language.ps1" -Destination "$installRoot\toggle-language.ps1" -Force
+Copy-Item -LiteralPath "$projectRoot\toggle-language.cmd" -Destination "$installRoot\toggle-language.cmd" -Force
 
 $pictures = [Environment]::GetFolderPath('MyPictures')
 if ([string]::IsNullOrWhiteSpace($pictures)) { $pictures = "$env:USERPROFILE\Pictures" }
@@ -175,19 +170,13 @@ if (Test-Path -LiteralPath $seelenSettingsPath) {
         [IO.File]::WriteAllText($seelenSettingsPath, $settingsJson, (New-Object Text.UTF8Encoding($false)))
     }
 }
-if (![string]::IsNullOrWhiteSpace($dockConfig) -and (Test-Path -LiteralPath $dockConfig -PathType Leaf)) {
-    Set-DockReflection $dockConfig
-}
+Set-DockReflection $dockConfig
 
 $seelenExe = "$env:LOCALAPPDATA\Microsoft\WindowsApps\seelen-ui.exe"
 if (Test-Path -LiteralPath $seelenExe) { Start-Process -FilePath $seelenExe }
-if (![string]::IsNullOrWhiteSpace($dockRoot)) {
-    $dockExe = "$dockRoot\Dock_64.exe"
-    if (Test-Path -LiteralPath $dockExe) { Start-Process -FilePath $dockExe -WorkingDirectory $dockRoot -WindowStyle Hidden }
-}
+$dockExe = "$dockRoot\Dock_64.exe"
+if (Test-Path -LiteralPath $dockExe) { Start-Process -FilePath $dockExe -WorkingDirectory $dockRoot -WindowStyle Hidden }
 
-$stateRoot = Join-Path $env:LOCALAPPDATA 'ObsidianGlassDesktop'
-New-Item -ItemType Directory -Force -Path $stateRoot | Out-Null
 $state = [ordered]@{
     installedAt = (Get-Date).ToString('o')
     backup = $backupRoot
@@ -198,8 +187,8 @@ $state = [ordered]@{
     seelenSettings = $seelenSettingsPath
     dockConfig = $dockConfig
 }
-[IO.File]::WriteAllText((Join-Path $stateRoot 'topbar-install-state.json'), ($state | ConvertTo-Json -Depth 4), (New-Object Text.UTF8Encoding($false)))
-[IO.File]::WriteAllText((Join-Path $stateRoot 'latest-media-center-backup.txt'), $backupRoot, (New-Object Text.UTF8Encoding($false)))
+[IO.File]::WriteAllText("$projectRoot\install-state.json", ($state | ConvertTo-Json -Depth 4), (New-Object Text.UTF8Encoding($false)))
+[IO.File]::WriteAllText($latestBackup, $backupRoot, (New-Object Text.UTF8Encoding($false)))
 
 Write-Host 'Desktop Media Center installed.'
 Write-Host "Media library: $library"

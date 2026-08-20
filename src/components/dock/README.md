@@ -1,4 +1,4 @@
-# Obsidian Glass AI Dock
+﻿# Obsidian Glass AI Dock
 
 这是当前启用的 Windows 11 功能型三区 Dock。它读取 MyDockFinder 已有应用，但不修改 `config.ini`、`ico.ini`、Windows 核心文件、壁纸或个人文件。
 

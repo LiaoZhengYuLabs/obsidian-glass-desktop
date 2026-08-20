@@ -1,0 +1,1209 @@
+﻿{
+    "schemaVersion":  1,
+    "package":  "Obsidian Glass Desktop",
+    "snapshotDate":  "2026-08-21",
+    "generatedAt":  "2026-08-20T17:23:21.0321366Z",
+    "fileCount":  238,
+    "totalBytes":  39861158,
+    "excluded":  [
+                     "runtime state",
+                     "logs",
+                     "backups",
+                     "speech models",
+                     "browser/WebView data",
+                     "full Petdex sprite cache",
+                     "the manifest itself"
+                 ],
+    "files":  [
+                  {
+                      "path":  ".gitignore",
+                      "bytes":  1881,
+                      "sha256":  "879026401d9dd671adf1a85fa40f402056125f41148a0b6c58b18ef46ca644b9"
+                  },
+                  {
+                      "path":  "capture-screenshots.ps1",
+                      "bytes":  289,
+                      "sha256":  "9a6016f8a8d17612b3d09af0b50bbe2a00ac3fbbe2ca1f9e728d7620040b9940"
+                  },
+                  {
+                      "path":  "CHANGELOG.md",
+                      "bytes":  2464,
+                      "sha256":  "479770a39f8ddfe981b962117cae81972182c464dcfbb34cd456396b22421f5b"
+                  },
+                  {
+                      "path":  "install-current-startup.ps1",
+                      "bytes":  3749,
+                      "sha256":  "f8cabfe68349d92b0cf7fa72014eef1396e2186fe7d9e0771f254d4d8b83d3e3"
+                  },
+                  {
+                      "path":  "install.ps1",
+                      "bytes":  1281,
+                      "sha256":  "75665bcf77644ab02d323f0972d3c1bce3ee3af81374bd33786c3332778ebcb1"
+                  },
+                  {
+                      "path":  "LICENSE",
+                      "bytes":  1059,
+                      "sha256":  "02b8e4c391f4b9961cb5fa6fa938b6ff96ce5fff82dfc2d703186427ce2733aa"
+                  },
+                  {
+                      "path":  "README.md",
+                      "bytes":  7012,
+                      "sha256":  "cab70a8747c31c063c511bbdbcdc178864625a55d19bfb108d230dd2763f147b"
+                  },
+                  {
+                      "path":  "restore-current-startup.ps1",
+                      "bytes":  1955,
+                      "sha256":  "a7617acb39ab905c1033dd124f242e380023ee959f3d05365ca50e225b9fe7a1"
+                  },
+                  {
+                      "path":  "restore.ps1",
+                      "bytes":  677,
+                      "sha256":  "ddcce8dbad0b135f7228db6480bef10b274d8dfe035d24c576cc9faffac0a83d"
+                  },
+                  {
+                      "path":  "SECURITY.md",
+                      "bytes":  2104,
+                      "sha256":  "cedaa43f7a5a6d574ae609b3a2349b256ea4dbc7be978f2c0afff7c468112def"
+                  },
+                  {
+                      "path":  "start-current.ps1",
+                      "bytes":  337,
+                      "sha256":  "703f2c87e9414d7c23bb59b613a928fd13531bfb260152634380e7c245a0f494"
+                  },
+                  {
+                      "path":  "start.ps1",
+                      "bytes":  377,
+                      "sha256":  "821a79f3f0903a8c38dec9e64acc82106e1cc08562c90d82f322dd549e8e8986"
+                  },
+                  {
+                      "path":  "status.ps1",
+                      "bytes":  362,
+                      "sha256":  "96deda8f94984143f1be7af9483a815ff62bce7e0e058fce131fc02a95dcb16b"
+                  },
+                  {
+                      "path":  "test.ps1",
+                      "bytes":  314,
+                      "sha256":  "0b00dce30795f364a12523a6e7a5480c49758fabb63e751fb2be5fff3cb9d288"
+                  },
+                  {
+                      "path":  "assets/manifest.json",
+                      "bytes":  2452,
+                      "sha256":  "1bcee1199c4b2ab0bf98aa28815e869d14d7aa61c7403ddbf1c6641075f16b97"
+                  },
+                  {
+                      "path":  "assets/README.md",
+                      "bytes":  474,
+                      "sha256":  "f023767e8fab56e6a899acb0adc3377829e5de42fbef881e20a607cb480a0deb"
+                  },
+                  {
+                      "path":  "assets/screenshots/01-overview.png",
+                      "bytes":  654753,
+                      "sha256":  "fdd276788bcd99d7e40cb5287a3545a036330cb3815d997525669afef809a68e"
+                  },
+                  {
+                      "path":  "assets/screenshots/02-dock.png",
+                      "bytes":  122971,
+                      "sha256":  "a77fe7934391499bd46d4c6e3ff2b48a5465e3b6c62341ff3e772c184502c55c"
+                  },
+                  {
+                      "path":  "assets/screenshots/03-sidebar.png",
+                      "bytes":  69624,
+                      "sha256":  "a41c02dbd1f5bcdc15b6df6813dbd5ca9d907678322f5695a939d58e83721332"
+                  },
+                  {
+                      "path":  "assets/screenshots/04-dashboard.png",
+                      "bytes":  469568,
+                      "sha256":  "33ef12df102dc4007b71fe28dca17065b65325a72504b4965ee379cc8a9a7e0c"
+                  },
+                  {
+                      "path":  "assets/screenshots/05-topbar.png",
+                      "bytes":  41007,
+                      "sha256":  "e20f07beb21be216ea76c11a11d03c56990a77a5872b19a01cae963dd0c92b22"
+                  },
+                  {
+                      "path":  "assets/screenshots/06-ambient.png",
+                      "bytes":  878921,
+                      "sha256":  "22c615d147f23acbb893d737a2c23f6c838bcd38d1ba8e95c4af0cf00493dc8f"
+                  },
+                  {
+                      "path":  "assets/screenshots/07-wallpaper.png",
+                      "bytes":  628406,
+                      "sha256":  "dfc24e32b0510776c61b39662a18fcf8cf519d97e2c833c3030068478c931950"
+                  },
+                  {
+                      "path":  "assets/screenshots/08-current-wallpaper-live.png",
+                      "bytes":  260183,
+                      "sha256":  "4686a4593a4aec5d87a164100c40932179161d5cb3d20a35149bd8e5a3d37d32"
+                  },
+                  {
+                      "path":  "config/current-desktop.example.json",
+                      "bytes":  1451,
+                      "sha256":  "a2920f6ab66e4be4764e02716ee9129cf807bab7c89b2fc7bbf534bb5dc2d309"
+                  },
+                  {
+                      "path":  "config/obsidian-glass.example.json",
+                      "bytes":  1540,
+                      "sha256":  "2a9ebae0954ff3b1e2f788948e15e390c4f10b38e6081b34bd2890a81546406d"
+                  },
+                  {
+                      "path":  "config/obsidian-glass.local.example.json",
+                      "bytes":  1282,
+                      "sha256":  "b64e3da699212ac98899c3e8caf21399e3afa487ac4b4a429bd0cdfec774cb36"
+                  },
+                  {
+                      "path":  "config/startup.example.json",
+                      "bytes":  218,
+                      "sha256":  "c6a1ff824cc09842a7b15a6501d12c3c94d04544114d0ce4993771bf502dcc92"
+                  },
+                  {
+                      "path":  "docs/ASSET_CATALOG.md",
+                      "bytes":  1413,
+                      "sha256":  "ab602eabea9c8ee2fe7d66ac4b447ca14392dfeaee5b406bcbcf45ec5745eeb6"
+                  },
+                  {
+                      "path":  "docs/CURRENT_SNAPSHOT.md",
+                      "bytes":  2580,
+                      "sha256":  "c53522d6866e815b3250a565b1997425c7650e026b45b59a8c8ead904dcf2e9f"
+                  },
+                  {
+                      "path":  "docs/PUBLISH_CHECKLIST.md",
+                      "bytes":  883,
+                      "sha256":  "b1ecf62c353b242c47a6c3659e81710e84e187308fe13a36b31d67e25ffc9852"
+                  },
+                  {
+                      "path":  "docs/SCREENSHOT_CATALOG.md",
+                      "bytes":  1718,
+                      "sha256":  "42971c44423f50d614824a0c5a4f431cda6cd52634a3d6c8b0e7eeaba9fd8ffb"
+                  },
+                  {
+                      "path":  "docs/SOURCE_MAP.md",
+                      "bytes":  1923,
+                      "sha256":  "03af775df0eb7f48f3194d39dc7607403473b92c546cb7712684f81d087cfbe3"
+                  },
+                  {
+                      "path":  "docs/STARTUP_DESIGN.md",
+                      "bytes":  1523,
+                      "sha256":  "2106d733ece3b699410f0dc629f1877e1b2f28589886ae025eb7e64b8aae4a1a"
+                  },
+                  {
+                      "path":  "src/Get-StartupStatus.ps1",
+                      "bytes":  2776,
+                      "sha256":  "0064e5b08dc944cde571ef192740c8cee175cd5a4cb263f9f40adc5e73c952c2"
+                  },
+                  {
+                      "path":  "src/Install-StartupKit.ps1",
+                      "bytes":  4817,
+                      "sha256":  "d31ddf2f645da560759703ccf0eda4fc646e6475603a8de9de9dabb637d2b495"
+                  },
+                  {
+                      "path":  "src/Restore-StartupKit.ps1",
+                      "bytes":  2195,
+                      "sha256":  "83dba9d449601df7f432d21aa714ab3ad7c4e4c10619e8b64e2867bafc6da1ba"
+                  },
+                  {
+                      "path":  "src/Start-DesktopSession.ps1",
+                      "bytes":  5243,
+                      "sha256":  "953338affdc7bc66693737ec1e55f5d1edec1a2e7107fa28b21c11b7a803b6c8"
+                  },
+                  {
+                      "path":  "src/Stop-DesktopSession.ps1",
+                      "bytes":  1282,
+                      "sha256":  "26e3cc52213de6eba808304c1cae7b6b9e95b2845d1c2a3e7022f58df154b464"
+                  },
+                  {
+                      "path":  "src/Test-StartupKit.ps1",
+                      "bytes":  3299,
+                      "sha256":  "d936b2344e663831bc45c7b98a49769be4c230b1bd794621aa8d0622946c952e"
+                  },
+                  {
+                      "path":  "src/components/ambient/DockMediaProgress.cs",
+                      "bytes":  13932,
+                      "sha256":  "069112ff45da3bb95f9c9e93811dedf0bff73fe3ba9c2feaed4549d8947dcd76"
+                  },
+                  {
+                      "path":  "src/components/ambient/DockMediaProgressLauncher.vbs",
+                      "bytes":  472,
+                      "sha256":  "b51833d69b275ac98288a89fc3c9642d3c4508173de06fb9441aa50054601d07"
+                  },
+                  {
+                      "path":  "src/components/ambient/DockVisibilityController.ps1",
+                      "bytes":  18742,
+                      "sha256":  "256e82d523b1e9eacf434f7eefc0dbc47f2bfa35fb7ab733430176729a6e96f0"
+                  },
+                  {
+                      "path":  "src/components/ambient/install-media-progress.ps1",
+                      "bytes":  2863,
+                      "sha256":  "cd8beb6c99e48148ae82cc86b96e4ca0e4268f222233d682533637fa9e97ea60"
+                  },
+                  {
+                      "path":  "src/components/ambient/install.ps1",
+                      "bytes":  4249,
+                      "sha256":  "609a3bafd4fa879d0be7843d6de95f0489673106ffb11b345b6fc01cfd333412"
+                  },
+                  {
+                      "path":  "src/components/ambient/MEDIA_PROGRESS_README.md",
+                      "bytes":  556,
+                      "sha256":  "4dd757a836159b890f03d8fc4002062e73903268daca03236abbb3ecaabf1cce"
+                  },
+                  {
+                      "path":  "src/components/ambient/README.md",
+                      "bytes":  556,
+                      "sha256":  "4dd757a836159b890f03d8fc4002062e73903268daca03236abbb3ecaabf1cce"
+                  },
+                  {
+                      "path":  "src/components/ambient/restore-media-progress.ps1",
+                      "bytes":  829,
+                      "sha256":  "a3e5540ff8524c0521f90b6b77dcdf414811c3b71e70cb0e18ff924bc0b581d9"
+                  },
+                  {
+                      "path":  "src/components/ambient/restore.ps1",
+                      "bytes":  1201,
+                      "sha256":  "5843bcfe4eb88eb34566e368794452c3106057094774a0b2736db2a5d8d651d4"
+                  },
+                  {
+                      "path":  "src/components/ambient/Set-DockVisibility.ps1",
+                      "bytes":  411,
+                      "sha256":  "cc32507ba57cb6699ed35822f3031fcc54e7d4af333e0992d63212ab68546bc3"
+                  },
+                  {
+                      "path":  "src/components/ambient/start.ps1",
+                      "bytes":  1042,
+                      "sha256":  "8a1337230a81be6fd95861811c0900ddadc0595df52e11bef3a17061a7294eca"
+                  },
+                  {
+                      "path":  "src/components/ambient/stop.ps1",
+                      "bytes":  251,
+                      "sha256":  "c7714534ade71e343f44dd61a98cc259a88bfe296eca0529e745e904b7e02fb3"
+                  },
+                  {
+                      "path":  "src/components/ambient/verify-media-progress.ps1",
+                      "bytes":  611,
+                      "sha256":  "6922ed57554bf10750c0dbe1542e8de72250f4e5f1ac94539355130e84eacbb0"
+                  },
+                  {
+                      "path":  "src/components/ambient/verify.ps1",
+                      "bytes":  967,
+                      "sha256":  "41187b870d93bd919bcd29c80b25f746a704f9b13e900f8e2ad887d499968e26"
+                  },
+                  {
+                      "path":  "src/components/dashboard/CHANGELOG.md",
+                      "bytes":  15799,
+                      "sha256":  "1114a37bb44a2a036a66e5915fda57c75b74a913c2878920c30f226b0eaa96b0"
+                  },
+                  {
+                      "path":  "src/components/dashboard/CUSTOM_DESKTOP_LAYOUT.md",
+                      "bytes":  1176,
+                      "sha256":  "2b8d59ad9185b9c4020689717098accdc0eda587d7183da0b1fd910da2272d9c"
+                  },
+                  {
+                      "path":  "src/components/dashboard/Dashboard.xaml",
+                      "bytes":  69810,
+                      "sha256":  "7f6f553bd2263ed6e2f256ec6090ff8c33c79a020addb3f64e101d830a4e54d5"
+                  },
+                  {
+                      "path":  "src/components/dashboard/diagnose_source_lines.ps1",
+                      "bytes":  917,
+                      "sha256":  "c0215cd902ee132994a81d55681bd6f3022a18503d41137f136175e895008e24"
+                  },
+                  {
+                      "path":  "src/components/dashboard/MacWidgetDashboard.ps1",
+                      "bytes":  274186,
+                      "sha256":  "cabbcacd0d17dfc858398b7566a5b89ebd80a9b694aa1480ef266a550679ee24"
+                  },
+                  {
+                      "path":  "src/components/dashboard/ObsidianAIDashboard.ps1",
+                      "bytes":  53095,
+                      "sha256":  "b9ce747f8344e54b4bb5dbed3f1a166ecaf90dd7b59c40e72c19093790481d40"
+                  },
+                  {
+                      "path":  "src/components/dashboard/QA.md",
+                      "bytes":  1417,
+                      "sha256":  "a8e9b8d0cee372bc73cd5b4e447f40b464de1bdf929ecd327af45c30fa4169c6"
+                  },
+                  {
+                      "path":  "src/components/dashboard/README.md",
+                      "bytes":  16344,
+                      "sha256":  "84c2b5cc6196ce0f406dac3846719031b400dd23dfb407bc564cb94665842e55"
+                  },
+                  {
+                      "path":  "src/components/dashboard/render_custom_preview.ps1",
+                      "bytes":  2398,
+                      "sha256":  "1a29e7736e2f4ddd2baa4fdc7d7381700e412faf0a24d6abe82b2359bdddf4c5"
+                  },
+                  {
+                      "path":  "src/components/dashboard/restore-control-overlay.ps1",
+                      "bytes":  843,
+                      "sha256":  "bfc5ceceb5c72c660a4949dc729f8ea09f8c679ad9fec3a6e4ced580364f4741"
+                  },
+                  {
+                      "path":  "src/components/dashboard/restore.ps1",
+                      "bytes":  591,
+                      "sha256":  "3b8e445e6ecfa3f058fdf65a5e8e6d00df902f914f9324c6a553c24a5c7cc9fa"
+                  },
+                  {
+                      "path":  "src/components/dashboard/restore_app_usage_widget.ps1",
+                      "bytes":  974,
+                      "sha256":  "04e9f21d968c54fbb7d51f420361f070deadabcd7317924694f34a055cb2b434"
+                  },
+                  {
+                      "path":  "src/components/dashboard/restore_custom_desktop.ps1",
+                      "bytes":  6027,
+                      "sha256":  "11ccef3e5cea575290f23d163831d8ae13f79f020f8ec94dbcc99403bbbf4098"
+                  },
+                  {
+                      "path":  "src/components/dashboard/restore_photo_lock_screen.ps1",
+                      "bytes":  2243,
+                      "sha256":  "8e41d2f05a4ff3ed7e95996b44d3a430ffee67ae85bfd2f6bb3aff425ae7cc48"
+                  },
+                  {
+                      "path":  "src/components/dashboard/start-control-overlay.ps1",
+                      "bytes":  1330,
+                      "sha256":  "b0e1dc4e8534b803b1b6f29b541e19f4515052013891ace17ef1b1f63b077342"
+                  },
+                  {
+                      "path":  "src/components/dashboard/start-delayed.ps1",
+                      "bytes":  331,
+                      "sha256":  "5a21647d21a01421b35766deac7857ee4f87ac5098377c8c7502b6f99ce4e39a"
+                  },
+                  {
+                      "path":  "src/components/dashboard/start-silent.vbs",
+                      "bytes":  657,
+                      "sha256":  "c96b03450395dadde7f335851d969e11219f2c60b971df90cd9d17d3adfbb9c8"
+                  },
+                  {
+                      "path":  "src/components/dashboard/start.ps1",
+                      "bytes":  3149,
+                      "sha256":  "07101afe40f21aab5124668163a3ee6b2e31198d886d7fa24bd67f387374ad63"
+                  },
+                  {
+                      "path":  "src/components/dashboard/status.ps1",
+                      "bytes":  2431,
+                      "sha256":  "064218dfd3f16122d03f22ea9fe80bb3ac921c732bdb949a66385f94e6735f9e"
+                  },
+                  {
+                      "path":  "src/components/dashboard/stop-control-overlay.ps1",
+                      "bytes":  613,
+                      "sha256":  "ae456dc9c110754819e0eea2e280bffdb56238d0c7503a204308cafa350ba350"
+                  },
+                  {
+                      "path":  "src/components/dashboard/stop.ps1",
+                      "bytes":  3609,
+                      "sha256":  "13db802d90332f1ebb29b9133b111f285d30fd7de27f508e63ca2b018ad1b866"
+                  },
+                  {
+                      "path":  "src/components/dashboard/SystemControlOverlay.ps1",
+                      "bytes":  30535,
+                      "sha256":  "656f1658ffb17a6d5f470c811de87e8fafe88b466a48f1efdb332b2f30515c32"
+                  },
+                  {
+                      "path":  "src/components/dashboard/SystemControlOverlay.xaml",
+                      "bytes":  6883,
+                      "sha256":  "342c03cca24cfc0f14607a8a8cb5df1d1372c5fbd1a5a9e1fa7200b2c54de707"
+                  },
+                  {
+                      "path":  "src/components/dashboard/test_todo_runtime_silent.ps1",
+                      "bytes":  6202,
+                      "sha256":  "4a68d35af6aa1987212d464ef46ddbe7168fb241421a6cca1e52eb00798cdb2d"
+                  },
+                  {
+                      "path":  "src/components/dashboard/validate_custom_desktop.ps1",
+                      "bytes":  4676,
+                      "sha256":  "7086a5be751277b600c1a948a4bfd48bc53d963d5c9b697b1fb8fd58de99c1c5"
+                  },
+                  {
+                      "path":  "src/components/dashboard/verify_runtime_silent.ps1",
+                      "bytes":  5629,
+                      "sha256":  "e19874e0440f61fa01f6918c9cc6c255dd76b86de10f54e59dc84d9c2dfb42dc"
+                  },
+                  {
+                      "path":  "src/components/dashboard/assets/mode-deck-reference.jpg",
+                      "bytes":  197655,
+                      "sha256":  "04696466de14c7a9d65dadf634e0a225db9b8b245d871e3155aea080030c975d"
+                  },
+                  {
+                      "path":  "src/components/dashboard/assets/media/strawberry-player-avatar.png",
+                      "bytes":  89025,
+                      "sha256":  "5a1f2b0b1789f5ddb876964b6856c044e711cead27bf964f7ed80f1e35388287"
+                  },
+                  {
+                      "path":  "src/components/dashboard/assets/widget-pets/byte-bunny-composite.png",
+                      "bytes":  38102,
+                      "sha256":  "0f89892573006207923f2f6200d311f5bec226068dcad0880178a6577892b5c7"
+                  },
+                  {
+                      "path":  "src/components/dashboard/assets/widget-pets/byte-bunny-frame0.png",
+                      "bytes":  40541,
+                      "sha256":  "e9ac122250809dc8284177f6658b4d02e7873f9679d104b64aded4f6272d09b4"
+                  },
+                  {
+                      "path":  "src/components/dashboard/assets/widget-pets/byte-bunny.png",
+                      "bytes":  2261463,
+                      "sha256":  "34827252ef3e8f71d004dff4fc032b34b90e3e4dc147855401452272844a43d1"
+                  },
+                  {
+                      "path":  "src/components/dashboard/assets/widget-pets/cloudy.png",
+                      "bytes":  2663807,
+                      "sha256":  "1ba5c751211cb0d5d61c0722b7b6ad2735ce84fcfd2595780fc352be57752c32"
+                  },
+                  {
+                      "path":  "src/components/dashboard/assets/widget-pets/fine-pup.png",
+                      "bytes":  2268041,
+                      "sha256":  "2697fd81be0ee064b7b577e3a8e02fdfb85bc92b687470a9fba8c1bd1251c768"
+                  },
+                  {
+                      "path":  "src/components/dashboard/assets/widget-pets/frame-reference.png",
+                      "bytes":  1616654,
+                      "sha256":  "7185d6b598b49de9934fcae2c06faf80978a229e5d0683742f54d0666b746ec6"
+                  },
+                  {
+                      "path":  "src/components/dashboard/assets/widget-pets/little-deer.png",
+                      "bytes":  2389886,
+                      "sha256":  "d757cba61fbff730b7be270c35266b73114bd73ece70b459c8274c0908885ea4"
+                  },
+                  {
+                      "path":  "src/components/dashboard/assets/widget-pets/nightly-fox.png",
+                      "bytes":  2000225,
+                      "sha256":  "6a6eb6c734814d779773b2da52fd2969616713fef6f61a6a9add3801aa43e478"
+                  },
+                  {
+                      "path":  "src/components/dashboard/assets/widget-pets/peri-the-owl.png",
+                      "bytes":  755476,
+                      "sha256":  "d403e71a72a3fea7272bd3e17dc6903f94d09d095789495d2ab413657361234a"
+                  },
+                  {
+                      "path":  "src/components/dashboard/assets/widget-pets/prompt-penguin.png",
+                      "bytes":  2309726,
+                      "sha256":  "fa86868eb719b2480355f0dc10fc3f787234a732eb45a5346c917dcb9b248a4e"
+                  },
+                  {
+                      "path":  "src/components/dashboard/assets/widget-pets/silver-shorthair.png",
+                      "bytes":  2721214,
+                      "sha256":  "a651da01c345a10146ed90ccf140d17746266402f66b6dea444818b038e43f9d"
+                  },
+                  {
+                      "path":  "src/components/dashboard/assets/widget-pets/SOURCES.md",
+                      "bytes":  1159,
+                      "sha256":  "2cb7f7965fe678e37f52fc463c4693c78faa36195b8d7ce181c03f875b5849bb"
+                  },
+                  {
+                      "path":  "src/components/dashboard/components/AIAgentWidget/view.xaml",
+                      "bytes":  2385,
+                      "sha256":  "2ae23a8e2aa7cfe1801933c162961ce4b0dd4afb5d6ee6964c710118dea0a9a1"
+                  },
+                  {
+                      "path":  "src/components/dashboard/components/GithubWidget/view.xaml",
+                      "bytes":  1776,
+                      "sha256":  "a7d8aadb57660ee944a711c481c72710eba9113ebd2d42c584e6ae88132d6bd1"
+                  },
+                  {
+                      "path":  "src/components/dashboard/components/MediaWidget/view.xaml",
+                      "bytes":  2331,
+                      "sha256":  "ce2555302cd986c0e62694ad2b294b5d7d57ae9eb916a947d745f2bd8b7b3aff"
+                  },
+                  {
+                      "path":  "src/components/dashboard/components/QuickToolsWidget/view.xaml",
+                      "bytes":  1446,
+                      "sha256":  "28e9378756dbb2d8ec195e19e34d6caec1db2cf2f7f47c718b278115ecb04983"
+                  },
+                  {
+                      "path":  "src/components/dashboard/components/SystemMonitorWidget/view.xaml",
+                      "bytes":  3511,
+                      "sha256":  "da3f380f2b1fbf5b09c10a231ad62da563b5a036c1444d026ab7fa451692f236"
+                  },
+                  {
+                      "path":  "src/components/dashboard/components/TimeWeatherWidget/view.xaml",
+                      "bytes":  3244,
+                      "sha256":  "891cac0656c9e18782ac7d5bc4b82a5eb9705348d2b588324f78dc4364fee796"
+                  },
+                  {
+                      "path":  "src/components/dashboard/components/TodoWidget/view.xaml",
+                      "bytes":  4942,
+                      "sha256":  "e0d31771967215b57ceea911aafae0a770cf572cc8441564583f273277806e81"
+                  },
+                  {
+                      "path":  "src/components/dashboard/components/WorkspacePulseWidget/view.xaml",
+                      "bytes":  2158,
+                      "sha256":  "6537e8a6d003a7c8a7644163c5d29c097ae652dd51e20d763b3347327325a256"
+                  },
+                  {
+                      "path":  "src/components/dashboard/lib/VirtualDesktopAccessor-LICENSE.txt",
+                      "bytes":  1066,
+                      "sha256":  "44ae0f210336cf2bae594afdfea802cdc2b85c2c1213c433b6f9252055fe5076"
+                  },
+                  {
+                      "path":  "src/components/dashboard/services/aiService.ps1",
+                      "bytes":  579,
+                      "sha256":  "3061f89cb626384defb7d9b2fa6d36e454ebf9deadd958352279ebc615409354"
+                  },
+                  {
+                      "path":  "src/components/dashboard/services/githubService.ps1",
+                      "bytes":  2059,
+                      "sha256":  "43d5def54af50c92fccfb2c5789f38d44a3f12d9c769a328aeae8ad2118c37e2"
+                  },
+                  {
+                      "path":  "src/components/dashboard/services/quickToolsService.ps1",
+                      "bytes":  5597,
+                      "sha256":  "96547f6aa03f0dd29f984e8a3ea05ea3d22de6e42ebc0dc3d3d6552abc37a6f8"
+                  },
+                  {
+                      "path":  "src/components/dashboard/services/systemService.ps1",
+                      "bytes":  6117,
+                      "sha256":  "d4c9ffc568f9d82abd8d70d8063fe41d21c380df29a9a2b6b155d7cf402b3167"
+                  },
+                  {
+                      "path":  "src/components/dashboard/services/todoService.ps1",
+                      "bytes":  4915,
+                      "sha256":  "6b98721280bd4510f0d32ea680355ffaa9a932823c65b9b988e38cac885f353d"
+                  },
+                  {
+                      "path":  "src/components/dashboard/services/weatherService.ps1",
+                      "bytes":  1385,
+                      "sha256":  "337637eb4ce0bebf3856eaa2d3aabc0cbfbe267c9b8158ab5f111f6ae553ecc7"
+                  },
+                  {
+                      "path":  "src/components/dashboard/speech/requirements-subtitles.txt",
+                      "bytes":  27,
+                      "sha256":  "ad7038ee2d6cd3f7d303c6f6791c182c38202b4a3c4fe52dd955f0fd14795560"
+                  },
+                  {
+                      "path":  "src/components/dashboard/speech/subtitle_worker.py",
+                      "bytes":  22531,
+                      "sha256":  "f20a8d27e44e0a44391e4807535a1846cf4d5c34afe59a08ab4246523bbb2245"
+                  },
+                  {
+                      "path":  "src/components/dashboard/speech/synced_lyrics_fetcher.py",
+                      "bytes":  6237,
+                      "sha256":  "58a3fafc24482af13b394b1d9808ee5f0962318ef29fc010835fcf956c11c894"
+                  },
+                  {
+                      "path":  "src/components/dashboard/speech/verify_whisper.py",
+                      "bytes":  2728,
+                      "sha256":  "4bfb3f132b6131ed79fd81cfaa2834a6b76df0c3ba7b836d8714cbf81c20b0a8"
+                  },
+                  {
+                      "path":  "src/components/dashboard/speech/whisper_worker.py",
+                      "bytes":  14811,
+                      "sha256":  "8633285a417d820286554ea9165a207bfae37e44874f88ff830d913b2aab6e3f"
+                  },
+                  {
+                      "path":  "src/components/dock/activate_wechat.ps1",
+                      "bytes":  3187,
+                      "sha256":  "5fa9f47025f0f7180166e4725b3768e7c1a5a6efcefbd0b7595f074539789022"
+                  },
+                  {
+                      "path":  "src/components/dock/fix_wechat_preview.ps1",
+                      "bytes":  2479,
+                      "sha256":  "67af8bde92da34c5a211f8957804b6b8d7a5d088564c99de29bfeb750c7ac1e2"
+                  },
+                  {
+                      "path":  "src/components/dock/functional-retention-test.json",
+                      "bytes":  361,
+                      "sha256":  "9b4f8e6661f800e26f8e42c41d31d8cefa37f81b68ed93a08033002a1a39ef68"
+                  },
+                  {
+                      "path":  "src/components/dock/ObsidianAIDock.ps1",
+                      "bytes":  62602,
+                      "sha256":  "19f754ae6391560e372c7f6a32fdc8d9108a4ccf92cd993bb4ed3070f01255a6"
+                  },
+                  {
+                      "path":  "src/components/dock/QA.md",
+                      "bytes":  2220,
+                      "sha256":  "8f0786a0c17f51b2902995c4f91ff9ee1eaf6f495c3125ec3dded2aa656c6045"
+                  },
+                  {
+                      "path":  "src/components/dock/README.md",
+                      "bytes":  4144,
+                      "sha256":  "3d074080099c1a32af6ee051537b1d45d5a4a9c23ab1f0bd06d4a69248c5093c"
+                  },
+                  {
+                      "path":  "src/components/dock/restore.ps1",
+                      "bytes":  687,
+                      "sha256":  "ca958a4a5569000da96aec3cf2952dc79858e272fb31a007dc98cc3e1eee9b0d"
+                  },
+                  {
+                      "path":  "src/components/dock/restore_wechat_preview.ps1",
+                      "bytes":  1654,
+                      "sha256":  "192c13aff6522cd7e9306e3e3faabd0fc1b59f44f8afb75b7cbe2ae2b8740c20"
+                  },
+                  {
+                      "path":  "src/components/dock/start.ps1",
+                      "bytes":  1988,
+                      "sha256":  "76e0f03e790ad6545265dc31cd61373849c1a8272f955508736746dc11115085"
+                  },
+                  {
+                      "path":  "src/components/dock/start_wechat_dock_dot.ps1",
+                      "bytes":  805,
+                      "sha256":  "7b0574c871bea6a08e8003551723a2f96d226dad696b9daf4502ab1198641882"
+                  },
+                  {
+                      "path":  "src/components/dock/start_wechat_dock_preview.ps1",
+                      "bytes":  822,
+                      "sha256":  "44c8f47f2ac31891bd32f282087739bf0e44416fa2680ae6aca8b3ba171ab09b"
+                  },
+                  {
+                      "path":  "src/components/dock/start_wechat_preview_guard.ps1",
+                      "bytes":  842,
+                      "sha256":  "c8084b70606dbcb12fed9e58b4d22984dbc1155d4cec953e6b1a82a2795e7140"
+                  },
+                  {
+                      "path":  "src/components/dock/status.ps1",
+                      "bytes":  1742,
+                      "sha256":  "58e3ae43f3c5f3b7e1663c5b779cc7a31690a5929790562c4c0da03ef3a78634"
+                  },
+                  {
+                      "path":  "src/components/dock/stop.ps1",
+                      "bytes":  2920,
+                      "sha256":  "b178188c88e2f8e48504294fbbc9f27a74d80475f125c8cf2273d877b35804c8"
+                  },
+                  {
+                      "path":  "src/components/dock/stop_wechat_dock_dot.ps1",
+                      "bytes":  290,
+                      "sha256":  "84d0282c19b04424acc491308e3057a11ce0e9c1b7a52d1303411ce0847256c6"
+                  },
+                  {
+                      "path":  "src/components/dock/stop_wechat_preview_guard.ps1",
+                      "bytes":  385,
+                      "sha256":  "e2e6269c68665e97158bb0a3daef2b9309bd5a6dbd28b9bd9e991f694c541fb5"
+                  },
+                  {
+                      "path":  "src/components/dock/WeChatDockDot.cs",
+                      "bytes":  11043,
+                      "sha256":  "f174ef54f9d4a588cd5f9eefa68d2f42dcb4fddb3a19b3f3b88e2d1b74b9a04d"
+                  },
+                  {
+                      "path":  "src/components/dock/WeChatDockPreview.cs",
+                      "bytes":  12748,
+                      "sha256":  "54831df16e2175066477a7ac3e3d3262fbd789cd1a1384871011069fabc84fea"
+                  },
+                  {
+                      "path":  "src/components/dock/WeChatPreviewGuard.cs",
+                      "bytes":  11080,
+                      "sha256":  "5e339ad607e96e2cd7dfa2ae4dd96efabd446e4399131f46509fd8bf25b00db6"
+                  },
+                  {
+                      "path":  "src/components/sidebar/design-qa.md",
+                      "bytes":  1830,
+                      "sha256":  "16ddd1d171429a36218877e967b15cb4bcedbbc5f756f3d8fb81579bce721b4e"
+                  },
+                  {
+                      "path":  "src/components/sidebar/FINAL_AUDIT.md",
+                      "bytes":  3051,
+                      "sha256":  "da40a5e3cbb9a17ec88112d2ff13b8848a704902c88bbcc0b9b3a8f013589e2b"
+                  },
+                  {
+                      "path":  "src/components/sidebar/management-qa.md",
+                      "bytes":  1942,
+                      "sha256":  "05ee01143b3f2dee98f643b0bd804e05529d4101d4409572358399abcf3d42f7"
+                  },
+                  {
+                      "path":  "src/components/sidebar/ObsidianSidebar.ps1",
+                      "bytes":  134934,
+                      "sha256":  "2ab8e054c2e280a8fc4e7d550b9430f7db58c7f05820e3244737bef6401b9ed4"
+                  },
+                  {
+                      "path":  "src/components/sidebar/phase2-qa.md",
+                      "bytes":  2302,
+                      "sha256":  "0feecad7e479e5a76fd7d52bf5118fa2b87b34f8587bbeee8cc1799ea9550543"
+                  },
+                  {
+                      "path":  "src/components/sidebar/phase3-qa.md",
+                      "bytes":  2437,
+                      "sha256":  "a77c72730a2009332ca21b0f6c1612195f19c81e85d5a83b9464afbb6e141c06"
+                  },
+                  {
+                      "path":  "src/components/sidebar/phase4-qa.md",
+                      "bytes":  3598,
+                      "sha256":  "4370ce76d6e4b2cbefe5c2d7451d256f493c695cb2e84f3e69434f073ff319be"
+                  },
+                  {
+                      "path":  "src/components/sidebar/PHASE_STATUS.md",
+                      "bytes":  1621,
+                      "sha256":  "da4fccea8c8d47735f4a0ef99a01766d18cc89e359532972ba06a172b6c1ef85"
+                  },
+                  {
+                      "path":  "src/components/sidebar/README.md",
+                      "bytes":  5480,
+                      "sha256":  "2f4ddc37a2c984328980874fa8750118ee6e96cb4e1e3750f88d07b2ace330e8"
+                  },
+                  {
+                      "path":  "src/components/sidebar/restore-window-style.ps1",
+                      "bytes":  2676,
+                      "sha256":  "7bbf43735d3432385668372c074b09151b4fcfdc438a36ed65fbe7f5f40d96f2"
+                  },
+                  {
+                      "path":  "src/components/sidebar/restore.ps1",
+                      "bytes":  816,
+                      "sha256":  "e79f0162b81a3264b06f4d33ee4424403abf7329ee37fd93123838cabada9a59"
+                  },
+                  {
+                      "path":  "src/components/sidebar/SeelenLivePreview.cs",
+                      "bytes":  35649,
+                      "sha256":  "e5b5e86a3d06e3540f3e73e1a2e2e2270f8ab57dd94e59d11e0d93c4b78dae99"
+                  },
+                  {
+                      "path":  "src/components/sidebar/start-seelen-capsule-silent.vbs",
+                      "bytes":  1271,
+                      "sha256":  "3ec9f2a573b3f1c04c7e1cf17a09ee8d6c45c541e340ab9b91e35613d38fc04f"
+                  },
+                  {
+                      "path":  "src/components/sidebar/start-silent.vbs",
+                      "bytes":  638,
+                      "sha256":  "8d66f29976ee4fa98ebeec09c831a5d70486fb23e036f6a5ce9a23a58184d77d"
+                  },
+                  {
+                      "path":  "src/components/sidebar/start.ps1",
+                      "bytes":  2094,
+                      "sha256":  "8272395fad00b4f9981bb89828dc09bdb8e4003050e0d99f312e1c0d44e875d6"
+                  },
+                  {
+                      "path":  "src/components/sidebar/start_seelen_live_preview.ps1",
+                      "bytes":  1695,
+                      "sha256":  "79a05ffe2a508eab659482c73d8b73cd7a28a9bbf10052626ec6e8373a4b632b"
+                  },
+                  {
+                      "path":  "src/components/sidebar/stop.ps1",
+                      "bytes":  816,
+                      "sha256":  "a51b43866dec79f2fd43e98548a63e1dbd2786c53294d7004d4fd320da4ccd57"
+                  },
+                  {
+                      "path":  "src/components/sidebar/stop_seelen_live_preview.ps1",
+                      "bytes":  156,
+                      "sha256":  "9411444d7c3fcc85eacce50b492af31b97333882c4b08f459bd3ca82dfb716cb"
+                  },
+                  {
+                      "path":  "src/components/sidebar/verify_custom_sidebar_silent.ps1",
+                      "bytes":  7982,
+                      "sha256":  "fdbcbac5bfc81d4878ed85752cf74f7361044c8d5c91e37fe6c7ae41daacc648"
+                  },
+                  {
+                      "path":  "src/components/sidebar/assets/ChatGPT.ico",
+                      "bytes":  11060,
+                      "sha256":  "1db05bb4748f3f9f4307f04ba5564178a13d9ecbceaeafa7221b69326275b889"
+                  },
+                  {
+                      "path":  "src/components/sidebar/assets/Codex.ico",
+                      "bytes":  11060,
+                      "sha256":  "1db05bb4748f3f9f4307f04ba5564178a13d9ecbceaeafa7221b69326275b889"
+                  },
+                  {
+                      "path":  "src/components/sidebar/assets/GitHub.ico",
+                      "bytes":  174444,
+                      "sha256":  "28985ef5cac9782810d57e0615f2c745ad691fe9d96f7d450ca01e3c2c5d9966"
+                  },
+                  {
+                      "path":  "src/components/sidebar/assets/Google Chrome.ico",
+                      "bytes":  37447,
+                      "sha256":  "664be4e02c2db255259d6659c0591dcb883bc53e2803d59bfc4e27e46ba0f531"
+                  },
+                  {
+                      "path":  "src/components/sidebar/assets/selected-ink-arc.png",
+                      "bytes":  513300,
+                      "sha256":  "611305159314b37f489b4cde1af8d854c2a34fa3c194f4ef7bc6ae60f2e134dc"
+                  },
+                  {
+                      "path":  "src/components/sidebar/assets/Visual Studio Code.ico",
+                      "bytes":  7481,
+                      "sha256":  "03f6cac5da233396bd2f07751d3b13791188cdaf972a3fc7d890c9007a5cd02d"
+                  },
+                  {
+                      "path":  "src/components/topbar/apply_x_github_art_icons.ps1",
+                      "bytes":  4325,
+                      "sha256":  "d14213bbb15043be220d45cf0c3b21ec42da7e0f0d2479d8b9d673caef8d4da3"
+                  },
+                  {
+                      "path":  "src/components/topbar/DesktopMediaCenter.ps1",
+                      "bytes":  28241,
+                      "sha256":  "a4bb0792170c1e8af22f8458f9164882261aea3b0c9aa6ca09b9cffad91e6997"
+                  },
+                  {
+                      "path":  "src/components/topbar/DesktopTopbar.cs",
+                      "bytes":  10459,
+                      "sha256":  "22248d5b70b9140696f5963dbfe359acccf686a9bf70d24abbd104a6e0d909ed"
+                  },
+                  {
+                      "path":  "src/components/topbar/install.ps1",
+                      "bytes":  8829,
+                      "sha256":  "d5c24f7f3645604f558350f4011f04dd930d1628539d33fb254e2eb36c94252a"
+                  },
+                  {
+                      "path":  "src/components/topbar/install_topbar.ps1",
+                      "bytes":  2602,
+                      "sha256":  "beb6c0cf98b961c27e02b2047a267261998ab3a8479fa8b3494645f1669368c6"
+                  },
+                  {
+                      "path":  "src/components/topbar/MediaCenter.xaml",
+                      "bytes":  15197,
+                      "sha256":  "45603f786177710cb3795016a65799116df5970283eda9768173f3f161d85283"
+                  },
+                  {
+                      "path":  "src/components/topbar/migrate_seelen_toolbar_v27.ps1",
+                      "bytes":  6155,
+                      "sha256":  "8050086997c848bd6bb75a6198bd1a1af38099f420ab57b6071c61e458e47cef"
+                  },
+                  {
+                      "path":  "src/components/topbar/ObsidianDesktopTopbar.vbs",
+                      "bytes":  177,
+                      "sha256":  "8cd9e31d05ed470a89885659f2905123ba6be0de971bd9323d2871108439ed88"
+                  },
+                  {
+                      "path":  "src/components/topbar/open-camera.cmd",
+                      "bytes":  141,
+                      "sha256":  "c31e3093cbdafa3ad95f0688189a29be75bf8d51fadc9eb43cc1c8813f22af2d"
+                  },
+                  {
+                      "path":  "src/components/topbar/open-recording.cmd",
+                      "bytes":  144,
+                      "sha256":  "1275eb7c516f9c43b1b21a161777511c5305e91d705ffcecb2beca0fb00f6c21"
+                  },
+                  {
+                      "path":  "src/components/topbar/open-screenshot.cmd",
+                      "bytes":  145,
+                      "sha256":  "699d042eec2e050c88ca83167bd25bd638c67830aa44f76ae9dfae461a79746f"
+                  },
+                  {
+                      "path":  "src/components/topbar/pin_claude_to_dock.ps1",
+                      "bytes":  2341,
+                      "sha256":  "e767fe741619fa77365f685cb615f3e5f8fc9df52d9847124fa9f4d3b62b2baf"
+                  },
+                  {
+                      "path":  "src/components/topbar/pin_x_github_to_dock.ps1",
+                      "bytes":  3054,
+                      "sha256":  "6ede54dcb4ab12a46dbd63502874dd9ecf817818f96be49455ea089847986fc8"
+                  },
+                  {
+                      "path":  "src/components/topbar/README.md",
+                      "bytes":  2101,
+                      "sha256":  "5aec79301e1bc8a322e10007fc7f51c63353694c4ea12038f48f20259fe4b3c7"
+                  },
+                  {
+                      "path":  "src/components/topbar/remove_classic_pawpause_from_dock.ps1",
+                      "bytes":  1659,
+                      "sha256":  "406ea8683626f28e9834f1bfe5a9b89be59979cf98a091b94f6169859c149e5b"
+                  },
+                  {
+                      "path":  "src/components/topbar/repair_camera_and_language.ps1",
+                      "bytes":  10713,
+                      "sha256":  "3946d4e98985e5c59c937013aa3ad6b08d50acc61bc3b2f95a5b337a32fb8d25"
+                  },
+                  {
+                      "path":  "src/components/topbar/restore.ps1",
+                      "bytes":  2686,
+                      "sha256":  "1740c196cb09e6a9bd528aff593a20d3e6db8b69e99ab0b58c4deb6b104c06b2"
+                  },
+                  {
+                      "path":  "src/components/topbar/restore_classic_pawpause_dock.ps1",
+                      "bytes":  734,
+                      "sha256":  "a030d16c3fd2f0bc2dc3e96bfc61700fb414804dbe366a594c40f1e834fbdd5e"
+                  },
+                  {
+                      "path":  "src/components/topbar/restore_topbar.ps1",
+                      "bytes":  1177,
+                      "sha256":  "cf8468a9cf04de495fc5926b89e87177ac871aefdf0545521ec9f7e96f210d7d"
+                  },
+                  {
+                      "path":  "src/components/topbar/start_music_visualizer.vbs",
+                      "bytes":  207,
+                      "sha256":  "527197651f686bdd45e431c8f09e31461a258fea372e30fa7f6b2196cdf6088e"
+                  },
+                  {
+                      "path":  "src/components/topbar/toggle-language.cmd",
+                      "bytes":  125,
+                      "sha256":  "fd9f959b37be555d3e583c2e76cbe5ec293dd539c8b6fc43c0698213bde60fd1"
+                  },
+                  {
+                      "path":  "src/components/topbar/toggle-language.ps1",
+                      "bytes":  1961,
+                      "sha256":  "9370a14795efabe2e30d8e7669ba319f1d4d60c2c79659a9610aa65be4f941ce"
+                  },
+                  {
+                      "path":  "src/components/topbar/topbar_default_state.yml",
+                      "bytes":  927,
+                      "sha256":  "3755ba773c1523415b5ece9589ea5e54836cf2c09800f93fba38e6a7ac980ab5"
+                  },
+                  {
+                      "path":  "src/components/topbar/unpin_claude_from_dock.ps1",
+                      "bytes":  728,
+                      "sha256":  "2297a60477730ea5990051e7ca013645eed4df81125ec89d709ee8da72fcedb7"
+                  },
+                  {
+                      "path":  "src/components/topbar/unpin_x_github_from_dock.ps1",
+                      "bytes":  717,
+                      "sha256":  "cdd07d16733e95d3681c1304f01093858be612502cf3504502bd42102b676ecc"
+                  },
+                  {
+                      "path":  "src/components/topbar/verify.ps1",
+                      "bytes":  4423,
+                      "sha256":  "cc4ddda08bd6b3160b56880220da3d950b41b7070082e9ba16e3fdca10b65c5e"
+                  },
+                  {
+                      "path":  "src/components/topbar/verify_camera_and_language.ps1",
+                      "bytes":  2699,
+                      "sha256":  "eb574c1a13087e03490632b8f7f0429a80bc9f55f8e47dd108848b27c608fc18"
+                  },
+                  {
+                      "path":  "src/components/wallpaper/iconfont.ttf",
+                      "bytes":  2008,
+                      "sha256":  "caaa5022f2cbf2c20c8caf70b335cdf22154388e824656f1ba33f1af3f98bdc3"
+                  },
+                  {
+                      "path":  "src/components/wallpaper/index.html",
+                      "bytes":  4342,
+                      "sha256":  "da3d2b99ce7c3c4909416a603ba93d20b3ba4f94d4f87d43409eaf47b93f7da5"
+                  },
+                  {
+                      "path":  "src/components/wallpaper/LDR_LLL1_0.png",
+                      "bytes":  7115,
+                      "sha256":  "140c55bd97c21b9b22008d7054b492333fec67fbfc1a1b266e5b0209b647eed4"
+                  },
+                  {
+                      "path":  "src/components/wallpaper/LICENSE.txt",
+                      "bytes":  1806,
+                      "sha256":  "dc53ad0db0a28fd3116933a44f4aaadcb1957cf0ea8b8c6dc42760f658fb3ac3"
+                  },
+                  {
+                      "path":  "src/components/wallpaper/LivelyInfo.json",
+                      "bytes":  409,
+                      "sha256":  "ec7175f680b26fab58a818187a069ae737b999ad46640aaa5383e4ca1bf9fa43"
+                  },
+                  {
+                      "path":  "src/components/wallpaper/LivelyProperties.json",
+                      "bytes":  17226,
+                      "sha256":  "b3754af037387547502ebef6e4ce7a3166974517e6b6be782a15bf107c95f993"
+                  },
+                  {
+                      "path":  "src/components/wallpaper/logo.png",
+                      "bytes":  306230,
+                      "sha256":  "ce673a5c1b3a04ef004387c674d2f5ae3970d9cefce8fd34501b5270c25da2d3"
+                  },
+                  {
+                      "path":  "src/components/wallpaper/preview.gif",
+                      "bytes":  347978,
+                      "sha256":  "4ca8eb750ae2df233d8f49d3dbc5d898a69c94a753e10ec5f6e90190ecbcb4c7"
+                  },
+                  {
+                      "path":  "src/components/wallpaper/README.md",
+                      "bytes":  552,
+                      "sha256":  "9e5fb145d58a82cc67ba3e20ebf7e18fab24f45bd111c7c947c34fda96f8c04e"
+                  },
+                  {
+                      "path":  "src/components/wallpaper/thumbnail.jpg",
+                      "bytes":  24622,
+                      "sha256":  "66ffa477b50d25e745581953518667cb889ccd7b452c194066945dbb6937e7e4"
+                  },
+                  {
+                      "path":  "src/components/wallpaper/animal-trail/animal-trail.js",
+                      "bytes":  79797,
+                      "sha256":  "8f20a8d2a502e882c36a07df175f90de88ae9ff2502a6c0ffd2d1529e8d1377e"
+                  },
+                  {
+                      "path":  "src/components/wallpaper/animal-trail/README.md",
+                      "bytes":  8934,
+                      "sha256":  "1acfbaf3b0c42b0d68191929918ca6f5a01111928f61185d025d6b3cb3c59d14"
+                  },
+                  {
+                      "path":  "src/components/wallpaper/animal-trail/assets/byte-bunny/pet.json",
+                      "bytes":  184,
+                      "sha256":  "c5674bc4fd7c869d8fa920ef0fac1d0eaa606de84788817fdab6bda76571ba85"
+                  },
+                  {
+                      "path":  "src/components/wallpaper/animal-trail/assets/byte-bunny/spritesheet.webp",
+                      "bytes":  1572650,
+                      "sha256":  "75da0d1a94f2933de217702a385d72acb8501aec24eacceddd44bed212a30e34"
+                  },
+                  {
+                      "path":  "src/components/wallpaper/animal-trail/assets/cloudy/pet.json",
+                      "bytes":  228,
+                      "sha256":  "c70f78de5221b5b73304900fc6f33611f53eead535a4ea4cfa6f9a04610bbe55"
+                  },
+                  {
+                      "path":  "src/components/wallpaper/animal-trail/assets/cloudy/spritesheet.webp",
+                      "bytes":  1889792,
+                      "sha256":  "b706cf263678922a2aa6d3f74d24bd2e7367af1848e27da79e44c945dd0526b5"
+                  },
+                  {
+                      "path":  "src/components/wallpaper/animal-trail/assets/fine-pup/pet.json",
+                      "bytes":  200,
+                      "sha256":  "2eab4e56a83ebb9289a3538fb7ca6bfb09abacb8c022f468fd87a2f8dc90afd5"
+                  },
+                  {
+                      "path":  "src/components/wallpaper/animal-trail/assets/fine-pup/spritesheet.webp",
+                      "bytes":  1707760,
+                      "sha256":  "6e9b087e2ff79b602ac6c96973474654d7cab41b8e71e294c5f2ed6d463604f3"
+                  },
+                  {
+                      "path":  "src/components/wallpaper/animal-trail/assets/little-deer/pet.json",
+                      "bytes":  221,
+                      "sha256":  "33fc6dae7071067eb3a0e6505eaa69eec32952659f071ea7c53594e7396f89b6"
+                  },
+                  {
+                      "path":  "src/components/wallpaper/animal-trail/assets/little-deer/spritesheet.webp",
+                      "bytes":  1892026,
+                      "sha256":  "c8fede25ff7550942b4bab2db125463f824ff33ba44a3fb34b1229d0b08df8f3"
+                  },
+                  {
+                      "path":  "src/components/wallpaper/animal-trail/assets/nightly-fox/pet.json",
+                      "bytes":  237,
+                      "sha256":  "c8deb229c6f23f3358487996bfa72e32293e070f4517f974c02bb8e83a17790f"
+                  },
+                  {
+                      "path":  "src/components/wallpaper/animal-trail/assets/nightly-fox/spritesheet.webp",
+                      "bytes":  1417824,
+                      "sha256":  "b0c34f7d16b3654b864dae3ecd408897c9bdffe6b9a7cc724e73b5d4d5a722db"
+                  },
+                  {
+                      "path":  "src/components/wallpaper/animal-trail/assets/peri-the-owl/pet.json",
+                      "bytes":  205,
+                      "sha256":  "00e65244b05361377127a68ee9b62319dacf6ce21d8e87d93a80f50ad5f2625b"
+                  },
+                  {
+                      "path":  "src/components/wallpaper/animal-trail/assets/peri-the-owl/spritesheet.webp",
+                      "bytes":  358718,
+                      "sha256":  "d2d80d8aafd6da22ed0fa3050bc69c705dca2b7b401b4c9043ad9159dd159097"
+                  },
+                  {
+                      "path":  "src/components/wallpaper/animal-trail/assets/prompt-penguin/pet.json",
+                      "bytes":  176,
+                      "sha256":  "2487570705902025a69917bcc3a92c37af3d6c8fa78756b3da62dbb82f0c2258"
+                  },
+                  {
+                      "path":  "src/components/wallpaper/animal-trail/assets/prompt-penguin/spritesheet.webp",
+                      "bytes":  1662370,
+                      "sha256":  "4dd8dbc7335cdf47e4470fe7d6c0d2b9d547667105291ad922739bb10ce86a03"
+                  },
+                  {
+                      "path":  "src/components/wallpaper/animal-trail/assets/silver-shorthair/pet.json",
+                      "bytes":  213,
+                      "sha256":  "f2ed9c1de1eff7f4f605e637acd0bbf99027abecc780f089f02345b94a2871d2"
+                  },
+                  {
+                      "path":  "src/components/wallpaper/animal-trail/assets/silver-shorthair/spritesheet.webp",
+                      "bytes":  1856772,
+                      "sha256":  "f6c102f0bc3efe8e3a82113ffa1e03c5f6f775079ba5068f09f2ee39792f725d"
+                  },
+                  {
+                      "path":  "src/components/wallpaper/animal-trail/catalog/creatures.js",
+                      "bytes":  650160,
+                      "sha256":  "213d03b890e3dea697fefad2c5f0bfb7a2410876d972ca9d9d4382f0a8cdecd1"
+                  },
+                  {
+                      "path":  "src/components/wallpaper/animal-trail/catalog/creatures.json",
+                      "bytes":  736151,
+                      "sha256":  "b876f74c720953aaa67230f782f9409e56a0aba8526ee046afff648554da6986"
+                  },
+                  {
+                      "path":  "src/components/wallpaper/animal-trail/catalog/sync-report.json",
+                      "bytes":  237,
+                      "sha256":  "0dd5106ef30af4534b5eb87dca1f4e385f3c252631fd0866507c1407373c4856"
+                  },
+                  {
+                      "path":  "src/components/wallpaper/js/dat.gui.min.js",
+                      "bytes":  50152,
+                      "sha256":  "1e81f7edf08026aa2c5f78a8c548eb64387d9ac735c9359b7cb18935f74fd9b7"
+                  },
+                  {
+                      "path":  "src/components/wallpaper/js/LDR_LLL1_0.png",
+                      "bytes":  7115,
+                      "sha256":  "140c55bd97c21b9b22008d7054b492333fec67fbfc1a1b266e5b0209b647eed4"
+                  },
+                  {
+                      "path":  "src/components/wallpaper/js/script.js",
+                      "bytes":  57302,
+                      "sha256":  "83dc4bc2ce1d5d2cd735acc52c50433444145808c9488d29e4ec84ea4519ad1d"
+                  },
+                  {
+                      "path":  "src/components/wallpaper/lively_theme/background.jpg",
+                      "bytes":  74207,
+                      "sha256":  "719b974025eca3bb46c832ce3124e502290cf9e5cfdc05842a31a14c6024ed73"
+                  },
+                  {
+                      "path":  "src/components/wallpaper/lively_theme/theme.json",
+                      "bytes":  199,
+                      "sha256":  "0889a0f310915bb825f3e2ceec6392d61f8aa7a453d9f9c7b2a994096c100389"
+                  },
+                  {
+                      "path":  "src/components/wallpaper/space-environment/space-config.js",
+                      "bytes":  3829,
+                      "sha256":  "a66539995bc1891303e5afd1cdd9d5760c92343ce16b0357326394a2fc4b81a6"
+                  },
+                  {
+                      "path":  "src/components/wallpaper/space-environment/space-environment.css",
+                      "bytes":  23762,
+                      "sha256":  "b617399156768d2e5626bb2c4f0f0c4fdf64a08fdfa528b62951682a12ebd494"
+                  },
+                  {
+                      "path":  "src/components/wallpaper/space-environment/space-environment.js",
+                      "bytes":  51909,
+                      "sha256":  "4027054006e890efc9bae5e7224966f7ccba1c102e1daa7bf129e1a02fda712d"
+                  },
+                  {
+                      "path":  "src/components/wallpaper/space-environment/assets/comet-space.jpg",
+                      "bytes":  103668,
+                      "sha256":  "07e8b71e97129ec0bd9ac394e4231ffb5c48370fee77453a50b15db7b3af9f7d"
+                  },
+                  {
+                      "path":  "src/components/wallpaper/wallpapers/mountain-surrounded-with-fog-1772973.jpg",
+                      "bytes":  309155,
+                      "sha256":  "2815b0600b4b58b1b1d38c520f4f0cd57219b81bec21382716c821f6d5e6851b"
+                  },
+                  {
+                      "path":  "src/components/wallpaper/wallpapers/pexels-neosiam-601798.jpg",
+                      "bytes":  215844,
+                      "sha256":  "79db1020b2643cde32e4362dcac41b6258a98ed49d70ebb0c38232e6b1beb8ca"
+                  },
+                  {
+                      "path":  "src/current/configure_today_startup.ps1",
+                      "bytes":  3159,
+                      "sha256":  "0187dcc7ac19da32a39b51a8fce5b740488946602c9ff28b63601605d2e2bf9e"
+                  },
+                  {
+                      "path":  "src/current/README.md",
+                      "bytes":  1134,
+                      "sha256":  "c1f31d95702f7257e6b00a3f2fbf95728a6efa8a7a513451c6140cc8e7ae7739"
+                  },
+                  {
+                      "path":  "src/current/restore_today_startup.ps1",
+                      "bytes":  1424,
+                      "sha256":  "466371705c98ff843e7591d551197eb929496fc729b3f619aaba82a07bfbda18"
+                  },
+                  {
+                      "path":  "src/current/startup_optimized.ps1",
+                      "bytes":  5030,
+                      "sha256":  "ea21e481a63c151f990ff630d81a1a09f6544623911ece11348df7af8dd26cc5"
+                  },
+                  {
+                      "path":  "src/current/startup_window_guard.ps1",
+                      "bytes":  1618,
+                      "sha256":  "54af657dfd49b2be3967679c9d79b9d02a98f756e007f866c8deb79f114c381e"
+                  },
+                  {
+                      "path":  "src/lib/ObsidianGlass.Paths.ps1",
+                      "bytes":  2441,
+                      "sha256":  "e35a6af5a714e4ef9cc514b9256c2782115ac0755beed2a86c8424e9a21993b9"
+                  },
+                  {
+                      "path":  "src/lib/StartupKit.Common.ps1",
+                      "bytes":  3648,
+                      "sha256":  "b253cd3f2a97582caa483326bcab42fedcc078070d3b51fa901e05939a1c8bf8"
+                  },
+                  {
+                      "path":  "tools/Get-AssetManifest.ps1",
+                      "bytes":  1405,
+                      "sha256":  "eb51a2cb78da1aba1405d2e7dfa49811b6191f382b9fc5ef538b0cc7e72fd25a"
+                  },
+                  {
+                      "path":  "tools/New-CurrentSourceManifest.ps1",
+                      "bytes":  2045,
+                      "sha256":  "2e984962f04dc4ddf9a937c04610743cbe9af83ee968c53da1b093ad2205c60c"
+                  },
+                  {
+                      "path":  "tools/New-DesktopPreview.ps1",
+                      "bytes":  1476,
+                      "sha256":  "522fdfc54b19bc485c8df8c97c41d521652eb285f3abdd463483d93a060836cb"
+                  },
+                  {
+                      "path":  "tools/Sync-AnimalTrailAssets.ps1",
+                      "bytes":  5318,
+                      "sha256":  "8acb06a147eb90b0c1ed292122bbcf3928789542c149893c118bf6646babfa02"
+                  }
+              ]
+}

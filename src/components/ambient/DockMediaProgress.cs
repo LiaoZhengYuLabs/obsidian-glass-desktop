@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
@@ -29,31 +29,10 @@ namespace ObsidianDockMediaProgress
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            string dockRoot = args.Length > 0 ? args[0] : FindDockRoot();
+            string dockRoot = args.Length > 0
+                ? args[0]
+                : @"C:\Program Files (x86)\Steam\steamapps\common\MyDockFinder";
             Application.Run(new MediaProgressForm(dockRoot));
-        }
-
-        private static string FindDockRoot()
-        {
-            string configured = Environment.GetEnvironmentVariable("OBSIDIAN_GLASS_DOCK_ROOT");
-            if (!string.IsNullOrWhiteSpace(configured) && Directory.Exists(configured))
-            {
-                return configured;
-            }
-
-            string programFiles = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles);
-            string programFilesX86 = Environment.GetEnvironmentVariable("ProgramFiles(x86)");
-            string[] candidates =
-            {
-                Path.Combine(programFilesX86 ?? string.Empty, "Steam", "steamapps", "common", "MyDockFinder"),
-                Path.Combine(programFiles, "Steam", "steamapps", "common", "MyDockFinder"),
-                Path.Combine(programFiles, "MyDockFinder")
-            };
-            foreach (string candidate in candidates)
-            {
-                if (Directory.Exists(candidate)) return candidate;
-            }
-            return string.Empty;
         }
     }
 

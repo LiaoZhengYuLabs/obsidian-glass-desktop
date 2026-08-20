@@ -1,4 +1,4 @@
-Option Explicit
+﻿Option Explicit
 
 Dim shell, fileSystem, projectRoot, powerShellPath, startScript, command
 Set shell = CreateObject("WScript.Shell")

@@ -1,11 +1,14 @@
-{
+﻿{
   "profileName": "obsidian-glass-compatible-example",
   "taskName": "Obsidian Glass Desktop",
   "projectRoot": ".",
+  "sourceOfTruth": "src/current/startup_optimized.ps1",
+  "defaultMode": "preview",
+  "runtimeStateRoot": "%LOCALAPPDATA%\\ObsidianGlassDesktop",
   "startupDelaySeconds": 2,
   "useScheduledTask": true,
   "useStartupFolderShortcut": false,
-  "notes": "All entries are disabled by default. Review each external dependency before enabling.",
+  "notes": "All entries are disabled by default. Review each external dependency before enabling. This profile documents the current snapshot; install-current-startup.ps1 is the opt-in launcher installer.",
   "components": [
     {
       "id": "dashboard",

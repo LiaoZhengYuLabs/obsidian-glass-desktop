@@ -17,8 +17,15 @@ $required = @(
     'src\Get-StartupStatus.ps1',
     'src\lib\StartupKit.Common.ps1',
     'config\obsidian-glass.example.json',
+    'config\current-desktop.example.json',
     'assets\manifest.json',
     'docs\SCREENSHOT_CATALOG.md',
+    'docs\CURRENT_SNAPSHOT.md',
+    'docs\current-source-manifest.json',
+    'start-current.ps1',
+    'restore-current-startup.ps1',
+    'install-current-startup.ps1',
+    'tools\New-CurrentSourceManifest.ps1',
     'tools\New-DesktopPreview.ps1'
 )
 

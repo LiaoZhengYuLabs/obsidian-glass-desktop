@@ -1,0 +1,13 @@
+﻿{
+  "QAPid": 42176,
+  "QAHandle": 135008,
+  "FixedApps": 14,
+  "MiddleDetectedWindowsPowerShell": true,
+  "MinimizedBeforeInvoke": true,
+  "RetainedPageButtonAppeared": true,
+  "RetainedPageButtonEnabled": true,
+  "InvokePatternAvailable": true,
+  "WindowRestoredAfterClick": true,
+  "RetainedPageRemovedAfterRestore": true,
+  "DockPid": 5864
+}

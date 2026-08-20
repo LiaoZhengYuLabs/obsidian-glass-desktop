@@ -1,8 +1,6 @@
 ﻿$ErrorActionPreference = "Stop"
 $projectRoot = Split-Path -Parent $MyInvocation.MyCommand.Path
 $mainScript = $projectRoot + "\ObsidianAIDock.ps1"
-$pathsHelper = Join-Path (Split-Path -Parent (Split-Path -Parent $projectRoot)) "lib\ObsidianGlass.Paths.ps1"
-if (Test-Path -LiteralPath $pathsHelper -PathType Leaf) { . $pathsHelper }
 
 $processes = Get-CimInstance Win32_Process -Filter "Name='powershell.exe'" -ErrorAction SilentlyContinue |
     Where-Object { $_.CommandLine -and $_.CommandLine.IndexOf($mainScript, [StringComparison]::OrdinalIgnoreCase) -ge 0 }
@@ -48,9 +46,8 @@ public static class ObsidianDockRestoreNative {
 
 $dock = Get-Process Dock_64 -ErrorAction SilentlyContinue | Select-Object -First 1
 if ($null -eq $dock) {
-    $dockRoot = Get-ObsidianGlassDockRoot
-    $dockExe = if (![string]::IsNullOrWhiteSpace($dockRoot)) { Join-Path $dockRoot "Dock_64.exe" } else { $null }
-    if (![string]::IsNullOrWhiteSpace($dockExe) -and (Test-Path -LiteralPath $dockExe -PathType Leaf)) {
+    $dockExe = "C:\Program Files (x86)\Steam\steamapps\common\MyDockFinder\Dock_64.exe"
+    if (Test-Path -LiteralPath $dockExe) {
         Start-Process -FilePath $dockExe -WorkingDirectory (Split-Path -Parent $dockExe)
         Start-Sleep -Seconds 2
         $dock = Get-Process Dock_64 -ErrorAction SilentlyContinue | Select-Object -First 1

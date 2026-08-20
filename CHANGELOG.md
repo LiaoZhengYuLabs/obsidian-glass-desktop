@@ -1,4 +1,14 @@
-# Changelog
+﻿# Changelog
+
+## 0.2.0 - 2026-08-21
+
+- Published a current-workspace snapshot as the successor branch `codex/current-desktop-20260821`.
+- Refreshed Dashboard, Dock, left Stage rail, topbar, ambient controllers, wallpaper, and startup sources from the active desktop project.
+- Moved Dashboard speech/media state and runtime paths to `%LOCALAPPDATA%\ObsidianGlassDesktop` so the public source tree does not become a runtime data directory.
+- Added portable current-session launch and restore entry points without enabling components by default.
+- Preserved the old public package and its branch as a historical predecessor instead of overwriting its source history.
+- Added a current snapshot source map, file manifest, sanitized live wallpaper capture, and explicit exclusion list.
+- Kept the full Petdex sprite cache, personal media, WebView data, logs, backups, compiled helpers, and user-specific files out of the publish set.
 
 ## 0.1.0 - 2026-08-20
 

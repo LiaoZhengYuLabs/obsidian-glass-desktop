@@ -1,4 +1,4 @@
-# Startup Design
+﻿# Startup Design
 
 ## Lifecycle
 

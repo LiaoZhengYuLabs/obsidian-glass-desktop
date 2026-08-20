@@ -3,8 +3,6 @@
 $ErrorActionPreference = "Stop"
 $projectRoot = Split-Path -Parent $MyInvocation.MyCommand.Path
 $mainScript = $projectRoot + "\ObsidianAIDock.ps1"
-$pathsHelper = Join-Path (Split-Path -Parent (Split-Path -Parent $projectRoot)) "lib\ObsidianGlass.Paths.ps1"
-if (Test-Path -LiteralPath $pathsHelper -PathType Leaf) { . $pathsHelper }
 
 if (!(Test-Path -LiteralPath $mainScript)) {
     throw "ObsidianAIDock.ps1 is missing."
@@ -32,10 +30,7 @@ if (!$NoStartup) {
     $shortcut.TargetPath = "$env:WINDIR\System32\WindowsPowerShell\v1.0\powershell.exe"
     $shortcut.Arguments = '-NoProfile -ExecutionPolicy Bypass -STA -WindowStyle Hidden -File "' + $mainScript + '"'
     $shortcut.WorkingDirectory = $projectRoot
-    $dockRoot = Get-ObsidianGlassDockRoot
-    if (![string]::IsNullOrWhiteSpace($dockRoot)) {
-        $shortcut.IconLocation = (Join-Path $dockRoot "Dock_64.exe") + ",0"
-    }
+    $shortcut.IconLocation = "C:\Program Files (x86)\Steam\steamapps\common\MyDockFinder\Dock_64.exe,0"
     $shortcut.Save()
 }
 
@@ -53,3 +48,4 @@ if (!$started) {
 
 Write-Host "Obsidian AI Dock started." -ForegroundColor Green
 if (!$NoStartup) { Write-Host "Startup shortcut enabled." }
+

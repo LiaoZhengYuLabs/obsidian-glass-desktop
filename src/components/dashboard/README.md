@@ -1,4 +1,4 @@
-# macOS 桌面小组件
+﻿# macOS 桌面小组件
 
 这是 Windows 11 的轻量 WPF 小组件层，外观按参考图重做。它与原来的 `Obsidian AI Workspace` 左侧应用边栏并行运行，不替换边栏，也不修改 Windows 核心文件、个人文件或桌面壁纸。
 

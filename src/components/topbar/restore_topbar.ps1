@@ -2,18 +2,15 @@
 
 $stateRoot = "$env:LOCALAPPDATA\ObsidianDesktopTopbar"
 $startupFile = "$env:APPDATA\Microsoft\Windows\Start Menu\Programs\Startup\ObsidianDesktopTopbar.vbs"
+$dockConfig = 'C:\Program Files (x86)\Steam\steamapps\common\MyDockFinder\config.ini'
 $backup = "$stateRoot\mydockfinder-config.before-obsidian-topbar.ini"
-$sourceRoot = Split-Path -Parent $PSCommandPath
-$pathsHelper = Join-Path (Split-Path -Parent (Split-Path -Parent $sourceRoot)) "lib\ObsidianGlass.Paths.ps1"
-if (Test-Path -LiteralPath $pathsHelper -PathType Leaf) { . $pathsHelper }
-$dockRoot = Get-ObsidianGlassDockRoot
-$dockConfig = if (![string]::IsNullOrWhiteSpace($dockRoot)) { Join-Path $dockRoot 'config.ini' } else { $null }
-$dockExe = if (![string]::IsNullOrWhiteSpace($dockRoot)) { Join-Path $dockRoot 'Dock_64.exe' } else { $null }
+$dockRoot = 'C:\Program Files (x86)\Steam\steamapps\common\MyDockFinder'
+$dockExe = "$dockRoot\Mydock.exe"
 
 Get-Process -Name ObsidianDesktopTopbar -ErrorAction SilentlyContinue | Stop-Process -Force
 Remove-Item -LiteralPath $startupFile -Force -ErrorAction SilentlyContinue
 
-if (![string]::IsNullOrWhiteSpace($dockConfig) -and (Test-Path -LiteralPath $backup)) {
+if (Test-Path -LiteralPath $backup) {
     Copy-Item -LiteralPath $backup -Destination $dockConfig -Force
 }
 

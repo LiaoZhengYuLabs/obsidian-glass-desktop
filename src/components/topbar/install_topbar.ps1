@@ -3,10 +3,7 @@
 $sourceRoot = Split-Path -Parent $PSCommandPath
 $stateRoot = "$env:LOCALAPPDATA\ObsidianDesktopTopbar"
 $startupRoot = "$env:APPDATA\Microsoft\Windows\Start Menu\Programs\Startup"
-$pathsHelper = Join-Path (Split-Path -Parent (Split-Path -Parent $sourceRoot)) "lib\ObsidianGlass.Paths.ps1"
-if (Test-Path -LiteralPath $pathsHelper -PathType Leaf) { . $pathsHelper }
-$dockRoot = Get-ObsidianGlassDockRoot
-$dockConfig = if (![string]::IsNullOrWhiteSpace($dockRoot)) { Join-Path $dockRoot 'config.ini' } else { $null }
+$dockConfig = 'C:\Program Files (x86)\Steam\steamapps\common\MyDockFinder\config.ini'
 $csc = "$env:WINDIR\Microsoft.NET\Framework64\v4.0.30319\csc.exe"
 $exePath = "$stateRoot\ObsidianDesktopTopbar.exe"
 $startupFile = "$startupRoot\ObsidianDesktopTopbar.vbs"
@@ -23,7 +20,7 @@ if ($LASTEXITCODE -ne 0 -or -not (Test-Path -LiteralPath $exePath)) {
     throw '顶部栏编译失败。'
 }
 
-if (![string]::IsNullOrWhiteSpace($dockConfig) -and (Test-Path -LiteralPath $dockConfig)) {
+if (Test-Path -LiteralPath $dockConfig) {
     $backup = "$stateRoot\mydockfinder-config.before-obsidian-topbar.ini"
     if (-not (Test-Path -LiteralPath $backup)) {
         Copy-Item -LiteralPath $dockConfig -Destination $backup -Force
@@ -42,8 +39,9 @@ if (![string]::IsNullOrWhiteSpace($dockConfig) -and (Test-Path -LiteralPath $doc
 Copy-Item -LiteralPath "$sourceRoot\ObsidianDesktopTopbar.vbs" -Destination $startupFile -Force
 
 # MyFinder reads its setting on launch. Restart only MyDockFinder, leaving other software untouched.
-$dockExe = if (![string]::IsNullOrWhiteSpace($dockRoot)) { Join-Path $dockRoot 'Dock_64.exe' } else { $null }
-if (![string]::IsNullOrWhiteSpace($dockExe) -and (Test-Path -LiteralPath $dockExe)) {
+$dockRoot = 'C:\Program Files (x86)\Steam\steamapps\common\MyDockFinder'
+$dockExe = "$dockRoot\Mydock.exe"
+if (Test-Path -LiteralPath $dockExe) {
     Get-CimInstance Win32_Process -Filter "Name = 'Dock_64.exe'" -ErrorAction SilentlyContinue |
         Where-Object { $_.ExecutablePath -like "$dockRoot*" } |
         ForEach-Object { Stop-Process -Id $_.ProcessId -Force -ErrorAction SilentlyContinue }

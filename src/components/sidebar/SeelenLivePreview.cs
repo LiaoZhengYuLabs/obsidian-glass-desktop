@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
@@ -47,9 +47,7 @@ internal static class SeelenLivePreview
             {
                 Id = "test.wechat",
                 DisplayName = "微信 - 当前页面",
-                Path = Path.Combine(
-                    Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles),
-                    "Tencent", "Weixin", "Weixin.exe")
+                Path = @"C:\Program Files\Tencent\Weixin\Weixin.exe"
             };
             List<WindowInfo> windows = Native.FindWindows(app);
             if (windows.Count == 0)

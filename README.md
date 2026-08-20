@@ -1,162 +1,142 @@
-# Obsidian Glass Desktop
+﻿# Obsidian Glass Desktop · 当前版本
 
-**A reversible Windows 11 ambient desktop shell for Dock, Stage rail, deep-space wallpaper, widgets, media status, and system controls.**
+这是 **2026-08-21 当前工作区快照**，用于继承旧公开包并作为新分支继续开发。它不是旧版 `obsidian-glass-desktop` 的复制品：活动源码来自当前 Windows 11 桌面项目，历史备份、个人运行数据和本机缓存已被排除。
 
-这是当前桌面项目的可移植开源整理版。项目名称从“Windows Desktop Startup Kit”升级为 **Obsidian Glass Desktop**：黑曜石玻璃、深空太极背景、左侧应用胶囊、底部 Dock、顶部状态栏和克制的环境光统一在一个可恢复的启动编排层里。
+## 目标
 
-> 目标不是替换 Windows，而是在普通 Windows 11 上提供一个可退出、可恢复、可逐项启用的桌面体验层。
+在普通 Windows 11 上叠加一层可退出、可恢复的桌面体验：
 
-## 视觉布局
+- 黑曜石玻璃 Dock：固定应用、运行状态、驻留页面和 DWM 实时预览。
+- 左侧 Stage Manager 胶囊：最近窗口、应用图标、边缘唤出和横向实时预览。
+- WPF 桌面组件：天气、时钟、日历、电量、AI 捕捉、待办、媒体进度、双语字幕和播放记录。
+- 顶部媒体中心：截图、录像、摄像头、输入法切换和 X/GitHub Dock 操作。
+- Lively 深空壁纸：太极流体、星点、十二星座、流星和动态动物轨迹。
+- 当前用户级启动编排与恢复入口。
 
-```text
-┌────────────────────────────── Obsidian Glass Topbar ──────────────────────────────┐
-│  AI / 文件 / 编辑 / 媒体 / 网络 / 电量                         当前模式与状态       │
-├── left Stage Rail ───────┬──────────── deep-space workspace ───────────┬───────────┤
-│  应用胶囊与窗口预览       │  太极流体 + 星系 + 流星 + 环境光 + 动态动物       │  可选组件  │
-│  鼠标靠近展开             │  中间留白，动画分层，低频刷新                   │  日历/天气  │
-├──────────────────────────┴─────────────────────────────────────────────┴───────────┤
-│                 Obsidian Dock + 媒体进度 + 可选系统控制胶囊                    │
-└────────────────────────────────────────────────────────────────────────────────────┘
-```
+项目不替换 Windows，不修改系统核心文件，也不要求安装黑苹果或修改 BIOS。
 
-## Showcase
+## 当前快照来源
 
-![Obsidian Glass Desktop overview](assets/screenshots/01-overview.png)
+以下目录是当前版本的活动源码入口：
 
-<p align="center">
-  <img src="assets/screenshots/02-dock.png" alt="Three-zone Dock" width="96%" />
-</p>
+| 能力 | 当前源码 | 当前保留内容 |
+| --- | --- | --- |
+| Dashboard | `src/components/dashboard/` | 当前 `MacWidgetDashboard.ps1`、组件 XAML、音乐/字幕/语音服务、控制胶囊 |
+| Dock | `src/components/dock/` | 当前三区 Dock、窗口跟踪、微信实时预览与运行黑点修复源码 |
+| 左侧栏 | `src/components/sidebar/` | 当前 Stage Manager 胶囊、DWM 缩略图、Seelen 横向预览 |
+| 顶栏 | `src/components/topbar/` | 当前媒体中心、录像时长、语言切换、X/GitHub/Claude 操作脚本 |
+| Ambient | `src/components/ambient/` | 当前 Dock 显隐和媒体进度组件 |
+| 壁纸 | `src/components/wallpaper/` | 当前深空环境、星座、流星、动物轨迹和 Petdex 元数据 |
+| 启动 | `src/current/` | 当前启动顺序的可移植版本及恢复脚本 |
 
-<p align="center">
-  <img src="assets/screenshots/03-sidebar.png" alt="Left Stage rail" width="30%" />
-  <img src="assets/screenshots/04-dashboard.png" alt="Ambient dashboard" width="30%" />
-  <img src="assets/screenshots/06-ambient.png" alt="Animal trail and ambient sky" width="35%" />
-</p>
+精确的文件来源、哈希和排除清单见 `docs/CURRENT_SNAPSHOT.md` 与 `docs/current-source-manifest.json`。
 
-<p align="center">
-  <img src="assets/screenshots/05-topbar.png" alt="Glass topbar" width="96%" />
-</p>
+## 快速检查
 
-![Deep-space wallpaper atlas](assets/screenshots/07-wallpaper.png)
-
-The screenshots are sanitized feature captures. Preview content, account names, and private chat/file text have been removed or masked before inclusion.
-
-## 已整理的组件
-
-| 区域 | 公开源码 | 作用 | 默认状态 |
-|---|---|---|---|
-| Dock | `src/components/dock/` | 固定应用、运行状态点、最近应用、窗口预览、微信兼容保护 | 可选 |
-| 左侧栏 | `src/components/sidebar/` | Stage Manager 风格应用栏、窗口预览和拖动 | 可选 |
-| Dashboard | `src/components/dashboard/` | 环境光、系统状态、控制胶囊、音乐/媒体接口 | 可选 |
-| 顶栏 | `src/components/topbar/` | Seelen 顶部状态栏和媒体入口 | 可选，需外部配置 |
-| Ambient | `src/components/ambient/` | Dock 显隐、媒体进度状态层 | 可选 |
-| Wallpaper | `src/components/wallpaper/` | Lively WebGL 流体、深空层、十二星系/流星、动物轨迹 | 作为 Lively 壁纸导入 |
-
-## 安全边界
-
-- 兼容 Windows 11 / Windows PowerShell 5.1。
-- 不修改 Windows 核心文件、BIOS、Defender、Windows Update、网络代理或个人文件。
-- 不默认关闭安全功能，也不默认结束第三方进程。
-- 只管理本工具自己创建的计划任务、启动快捷方式和已记录的组件进程。
-- 状态、备份和日志写入 `%LOCALAPPDATA%\ObsidianGlassDesktop`，不会写回仓库。
-- MyDockFinder、Seelen UI、Lively Wallpaper、Rainmeter 和可选语音运行时均属于外部依赖，必须逐项确认后启用。
-- 顶栏安装脚本会备份并修改第三方配置，因此默认关闭；不需要顶栏时不要启用它。
-
-## 快速开始
-
-在 PowerShell 5.1 中进入本目录：
-
-```powershell
-cd .\open-source\obsidian-glass-desktop
-```
-
-先运行只读检查：
+先做只读检查，不启动任何组件：
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File .\test.ps1
+powershell -ExecutionPolicy Bypass -File .\start-current.ps1 -VerifyOnly
 ```
 
-安全预览启动安装（不会写入任务或快捷方式）：
+## 启动方式
+
+### 只启动当前组件会话
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\start-current.ps1
+```
+
+它会按当前桌面使用顺序尝试启动 Dashboard、左侧栏、Dock、Dock 显隐控制，并在检测到时启动 MyDockFinder、Lively Wallpaper 和 Rainmeter。未安装的外部软件只写日志，不会被下载或强行安装。
+
+### 单独启动组件
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\src\components\dashboard\start.ps1 -NoStartup
+powershell -ExecutionPolicy Bypass -File .\src\components\sidebar\start.ps1 -NoStartup
+powershell -ExecutionPolicy Bypass -File .\src\components\dock\start.ps1 -NoStartup
+powershell -ExecutionPolicy Bypass -File .\src\components\ambient\start.ps1
+```
+
+### 可恢复的开机入口
+
+默认配置是安全预览，所有组件关闭：
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File .\install.ps1
 ```
 
-确认后，使用安全模板注册一个空的可恢复启动配置：
+确认外部依赖和组件后，才使用：
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File .\install.ps1 -Apply
 ```
 
-要启用组件，请复制 `config\obsidian-glass.local.example.json` 为本地私有配置，逐项检查依赖和 `enabled` 字段，再执行：
+安装器只创建当前用户计划任务或用户启动快捷方式，不修改系统核心文件。恢复：
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File .\install.ps1 -ConfigPath .\config\obsidian-glass.local.json -Apply
-```
-
-手动启动、查看状态和恢复：
-
-```powershell
-powershell -ExecutionPolicy Bypass -File .\start.ps1 -ConfigPath .\config\obsidian-glass.local.json
-powershell -ExecutionPolicy Bypass -File .\status.ps1 -ConfigPath .\config\obsidian-glass.local.json
 powershell -ExecutionPolicy Bypass -File .\restore.ps1
+powershell -ExecutionPolicy Bypass -File .\restore-current-startup.ps1
 ```
 
-`restore.ps1` 只停止本工具记录的组件并移除本工具创建的启动入口；它不会卸载软件，也不会恢复或删除个人文件。
-
-## 壁纸与动物轨迹
-
-将 `src\components\wallpaper` 作为 Lively Wallpaper 的本地壁纸目录导入。默认包含深空流体、星点、星系、流星、环境光和 8 个动物 starter presets；动物轨迹引擎保留 80 个目录上限和 40 个同时活动上限。
-
-完整 Petdex 目录的 1,593 条元数据也已保留。社区精灵图不进入公开 Git 提交；首次运行会从原始目录 URL 加载可用预览。需要在本机缓存 8 个 starter sprites 时：
+如果只想为这个当前分支创建独立的开机入口，请先预览，再显式应用：
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File .\tools\Sync-AnimalTrailAssets.ps1 -DownloadFromPetdex
+powershell -ExecutionPolicy Bypass -File .\install-current-startup.ps1
+powershell -ExecutionPolicy Bypass -File .\install-current-startup.ps1 -Apply
 ```
 
-全量精灵图约 3 GB。只在确认磁盘空间和素材权利后再执行：
+它只使用当前用户权限，并只管理名为 `Obsidian Glass Desktop - Current` 的任务和同名启动快捷方式。旧版启动任务不会被迁移或删除。
 
-```powershell
-powershell -ExecutionPolicy Bypass -File .\tools\Sync-AnimalTrailAssets.ps1 -IncludeAllCatalogAssets -Force
-```
+## 语音、音乐与字幕
 
-该命令默认从本地缓存同步；也可以显式组合 `-DownloadFromPetdex -IncludeAllCatalogAssets -Force`。社区素材的再分发权利需要由使用者自行确认。
+源码保留当前的本地语音识别、可编辑结果、电影双语字幕、同步歌词、媒体进度和播放历史逻辑。大模型、CUDA DLL、便携 Python、WebView2 数据和个人媒体没有放入 GitHub：
 
-## 微信与语音输入说明
+- 语音运行时默认位置：`%LOCALAPPDATA%\ObsidianGlassDesktop\runtime\speech`。
+- 可通过环境变量 `OBSIDIAN_GLASS_SPEECH_ROOT` 指定自己的运行时目录。
+- 缺少运行时会显示依赖不可用并保留界面，不会修改全局 Python 或 AI 开发环境。
+- 当前收藏音乐的自动播放仍由现有桌面设置决定；公开包不会携带音频文件、歌词缓存或账号数据。
 
-微信 4.x 的主内容区是 Qt 自绘窗口，Windows UI Automation 无法稳定定位内部语音按钮；因此本项目不会伪造点击或读取聊天内容。当前保留的是：窗口激活、Dock 预览保护、以及语音转文字期间的通信音量防误触逻辑。Windows 原生音量 OSD 是否显示，仍由系统设置决定，不由本项目强行隐藏。
+具体 Python 依赖见 `src/components/dashboard/speech/requirements-subtitles.txt`，安装到隔离运行时，不要覆盖系统环境。
 
-## 截图
+## 深空壁纸与动物
 
-高分辨率功能截图存放在 `assets\screenshots\`，索引见 `docs\SCREENSHOT_CATALOG.md`。重新采集当前屏幕（只读，不切换壁纸或移动窗口）：
+把 `src/components/wallpaper/` 导入 Lively Wallpaper，即可使用当前网页壁纸源码。当前版本保留：
 
-```powershell
-powershell -ExecutionPolicy Bypass -File .\capture-screenshots.ps1 -Name overview
-```
+- 太极流体与分层深空环境。
+- 十二星座轮换、星点漂移和流星通道。
+- 动态动物轨迹系统：鼠标/触控板轨迹、闲置自主活动、群体行为、手势和低帧保护。
+- Petdex 当前 1,593 条生物元数据和 8 个轻量 starter 精灵图。
 
-发布前必须检查截图中的聊天、文件名、账户名、地址和令牌。
+完整 Petdex 精灵缓存约 3 GB，且社区素材许可需要逐项确认，因此不进入公开提交。需要时再按 `src/components/wallpaper/animal-trail/catalog/` 中的元数据自行同步，并保留原始来源声明。
 
-## 项目结构
+## 外部依赖
 
-```text
-obsidian-glass-desktop/
-  assets/                         资产清单与公开截图
-  config/                         安全模板与本地配置示例
-  docs/                           源码映射、启动设计、发布检查
-  src/components/dock/            Dock 与微信预览兼容层
-  src/components/sidebar/          左侧 Stage rail
-  src/components/dashboard/        环境光、控制胶囊和系统面板
-  src/components/topbar/           顶部状态栏与媒体中心
-  src/components/ambient/          Dock 显隐与媒体进度
-  src/components/wallpaper/        WebGL 深空壁纸和动物轨迹
-  src/lib/                         启动状态、路径和日志辅助函数
-  tools/                           检查、截图和动物资源同步工具
-```
+| 依赖 | 作用 | 是否随包提供 |
+| --- | --- | --- |
+| Windows PowerShell 5.1 / WPF | 组件、Dock、左侧栏 | Windows 自带 |
+| MyDockFinder | 底部 Dock 宿主 | 不提供，用户自行从 Steam/官网安装 |
+| Seelen UI | 顶部栏和可选横向预览 | 不提供 |
+| Lively Wallpaper | WebGL 深空壁纸宿主 | 不提供 |
+| Rainmeter | 可选第三方皮肤 | 不提供 |
+| FFmpeg / FFplay | 顶栏录像和摄像头功能 | 使用本机已有版本，不随包下载 |
+| C# 编译器 | 微信预览/媒体进度辅助程序 | 只提供 `.cs` 源码，不提交 `.exe` |
 
-## 许可与来源
+## 安全边界
 
-仓库自身脚本使用 MIT 许可。壁纸目录保留原始 `LICENSE.txt` 和上游归属信息；应用图标、用户提供的壁纸、音乐、字幕和社区动物素材的许可状态见 `assets\manifest.json` 与 `docs\ASSET_CATALOG.md`。未确认授权的内容不应作为公开发行包的一部分。
+- 不删除个人文件，不清理微信、浏览器或媒体数据。
+- 不关闭 Defender、Windows Update、安全中心或网络代理。
+- 不修改 BIOS、驱动、系统核心文件或全局开发环境。
+- 顶栏配置迁移、MyDockFinder 配置编辑和启动任务注册都需要显式运行对应脚本，并会先备份。
+- 组件日志和状态写入本机运行目录或被 `.gitignore` 排除的目录，不应提交。
 
-## 后续迭代
+发布前运行 `test.ps1`，并人工检查 `git status`。安全规则见 `SECURITY.md`。
 
-建议先在干净的 Windows 11 虚拟机或测试账户中验证，再把已确认的组件配置放入私有配置文件。每次迭代都应先运行 `test.ps1`，再更新 `CHANGELOG.md` 和截图索引。
+## 版本关系
+
+- 旧版历史分支：`codex/publish-obsidian-glass-desktop`。
+- 当前分支：`codex/current-desktop-20260821`。
+- `main` 在发布完成后指向当前快照；旧分支仍保留，便于比较和回退。
+
+这套分支策略保留旧版本，同时让当前桌面修改拥有独立、可追踪的发布点。

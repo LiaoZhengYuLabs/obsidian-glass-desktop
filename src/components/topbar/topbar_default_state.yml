@@ -1,4 +1,4 @@
-isReorderDisabled: false
+﻿isReorderDisabled: false
 left:
   - '@seelen/tb-user-menu'
   - id: restored-focused-separator

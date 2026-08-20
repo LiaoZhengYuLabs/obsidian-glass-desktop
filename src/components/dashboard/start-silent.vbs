@@ -1,4 +1,4 @@
-Option Explicit
+﻿Option Explicit
 
 Dim shell, fileSystem, projectRoot, powerShellPath, delayedScript, command
 Set shell = CreateObject("WScript.Shell")

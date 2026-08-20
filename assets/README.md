@@ -1,4 +1,4 @@
-# Assets
+﻿# Assets
 
 This directory stores the catalog and sanitized public screenshots. Add binary assets locally after checking ownership and redistribution rights.
 

@@ -1,4 +1,4 @@
-# Obsidian AI Workspace
+﻿# Obsidian AI Workspace
 
 Windows 11 原生桌面增强项目。当前左侧栏采用类似 macOS Stage Manager 的最近窗口卡片，不修改系统核心文件。
 

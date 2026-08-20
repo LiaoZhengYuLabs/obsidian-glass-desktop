@@ -1,4 +1,4 @@
-# Dock 媒体进度条
+﻿# Dock 媒体进度条
 
 这是 MyDockFinder 外部的轻量状态层，不修改 Dock 程序文件。
 

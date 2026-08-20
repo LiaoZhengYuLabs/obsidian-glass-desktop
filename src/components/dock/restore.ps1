@@ -15,3 +15,4 @@ foreach ($name in @("fixed-order.json", "recent-apps.json")) {
 
 Write-Host "Original MyDockFinder Dock is active again." -ForegroundColor Green
 Write-Host "No application, launcher, MyDockFinder configuration, wallpaper, or personal file was removed."
+

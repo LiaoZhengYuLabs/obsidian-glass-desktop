@@ -1,4 +1,4 @@
-# Local runtime state and logs
+﻿# Local runtime state and logs
 state/
 logs/
 *.log
@@ -20,12 +20,32 @@ src/components/wallpaper/**/.edge-headless*
 src/components/wallpaper/animal-trail/catalog/assets/
 src/components/wallpaper/animal-trail/assets/*
 !src/components/wallpaper/animal-trail/assets/.gitkeep
+!src/components/wallpaper/animal-trail/assets/
+!src/components/wallpaper/animal-trail/assets/byte-bunny/
+!src/components/wallpaper/animal-trail/assets/byte-bunny/*
+!src/components/wallpaper/animal-trail/assets/cloudy/
+!src/components/wallpaper/animal-trail/assets/cloudy/*
+!src/components/wallpaper/animal-trail/assets/fine-pup/
+!src/components/wallpaper/animal-trail/assets/fine-pup/*
+!src/components/wallpaper/animal-trail/assets/little-deer/
+!src/components/wallpaper/animal-trail/assets/little-deer/*
+!src/components/wallpaper/animal-trail/assets/nightly-fox/
+!src/components/wallpaper/animal-trail/assets/nightly-fox/*
+!src/components/wallpaper/animal-trail/assets/peri-the-owl/
+!src/components/wallpaper/animal-trail/assets/peri-the-owl/*
+!src/components/wallpaper/animal-trail/assets/prompt-penguin/
+!src/components/wallpaper/animal-trail/assets/prompt-penguin/*
+!src/components/wallpaper/animal-trail/assets/silver-shorthair/
+!src/components/wallpaper/animal-trail/assets/silver-shorthair/*
+src/components/dashboard/mode-deck-reference.jpg
 
 # Never publish locally compiled or downloaded runtime binaries
 *.exe
 *.dll
 *.pdb
 speech-runtime/
+__pycache__/
+*.pyc
 
 # Editors and PowerShell leftovers
 .vscode/

@@ -1,4 +1,4 @@
-(function () {
+﻿(function () {
   "use strict";
 
   var MAX_ANIMALS = 80;
@@ -542,17 +542,8 @@
         if (item.visualKey) catalogVisuals.add(item.visualKey);
         for (var heroIndex = 0; heroIndex < heroCount; heroIndex++) {
           if (species[heroIndex].slug === item.slug) {
-            var hero = species[heroIndex];
-            hero.visualKey = item.visualKey;
-            hero.spritesheetUrl = item.spritesheetUrl;
-            hero.nameKey = identityName(hero);
-
-            // Public checkouts do not redistribute community sprite binaries.
-            // When no locally synchronized starter exists, use the catalog URL.
-            if (!hero.loaded && !hero.loading && hero.spritesheetUrl) {
-              hero.remoteTried = true;
-              beginImageLoad(hero, hero.spritesheetUrl);
-            }
+            species[heroIndex].visualKey = item.visualKey;
+            species[heroIndex].nameKey = identityName(species[heroIndex]);
           }
         }
       });

@@ -1,4 +1,4 @@
-(function () {
+﻿(function () {
   "use strict";
 
   if (window.SpaceEnvironmentSystem && typeof window.SpaceEnvironmentSystem.destroy === "function") {

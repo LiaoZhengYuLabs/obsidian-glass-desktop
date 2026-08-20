@@ -1,17 +1,11 @@
-# Dock Visibility Controller
+﻿# Dock 媒体进度条
 
-This helper controls only the visible MyDockFinder panel. It does not modify MyDockFinder settings, Dock icons, Windows system files, or desktop content.
+这是 MyDockFinder 外部的轻量状态层，不修改 Dock 程序文件。
 
-- Single click on an empty desktop area or a native app background: collapse the Dock.
-- Double click on an empty desktop area or a native app background: keep the Dock fixed and visible.
-- Buttons, text inputs, browser pages, video areas, and code editor content are excluded. A browser or editor title-bar background can still control the Dock.
-- The selected mode is saved at `%LOCALAPPDATA%\ObsidianDockVisibility\mode.txt` and is restored at sign-in.
-- Logs are written to `logs\dock-visibility-controller.log`.
+- 读取 Windows 原生媒体会话，支持浏览器视频、电影和音乐。
+- 把进度线显示在对应的固定 Dock 应用下方。
+- 仅在鼠标靠近底部 Dock 时出现，不遮挡全屏电影。
+- 900ms 刷新一次，不读取或上传媒体内容。
+- 登录后延迟 18 秒启动，减轻开机阶段的并发负载。
 
-Manual controls:
-
-```powershell
-powershell -ExecutionPolicy Bypass -File .\Set-DockVisibility.ps1 -Mode fixed
-powershell -ExecutionPolicy Bypass -File .\Set-DockVisibility.ps1 -Mode collapsed
-powershell -ExecutionPolicy Bypass -File .\stop.ps1
-```
+运行 `install.ps1` 安装；运行 `restore.ps1` 可移除状态层。恢复不会删除个人媒体文件。

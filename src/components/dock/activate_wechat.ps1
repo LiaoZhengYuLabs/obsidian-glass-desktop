@@ -1,20 +1,7 @@
 ﻿$ErrorActionPreference = "SilentlyContinue"
 
+$wechatExe = "C:\Program Files\Tencent\Weixin\Weixin.exe"
 $projectFolder = Split-Path -Parent $MyInvocation.MyCommand.Path
-$pathsHelper = Join-Path (Split-Path -Parent (Split-Path -Parent $projectFolder)) "lib\ObsidianGlass.Paths.ps1"
-if (Test-Path -LiteralPath $pathsHelper -PathType Leaf) { . $pathsHelper }
-$wechatExe = $null
-$wechatCandidates = @(
-    (Join-Path ${env:ProgramFiles} 'Tencent\Weixin\Weixin.exe'),
-    (Join-Path ${env:ProgramFiles(x86)} 'Tencent\Weixin\Weixin.exe'),
-    (Join-Path $env:LOCALAPPDATA 'Tencent\Weixin\Weixin.exe')
-)
-foreach ($candidate in $wechatCandidates) {
-    if (![string]::IsNullOrWhiteSpace($candidate) -and (Test-Path -LiteralPath $candidate -PathType Leaf)) {
-        $wechatExe = $candidate
-        break
-    }
-}
 $logFolder = "$projectFolder\logs"
 $logFile = "$logFolder\wechat-activate.log"
 

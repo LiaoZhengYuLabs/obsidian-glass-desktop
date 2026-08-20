@@ -1,4 +1,4 @@
-# Publish Checklist
+﻿# Publish Checklist
 
 - [ ] Run `powershell -ExecutionPolicy Bypass -File .\test.ps1`.
 - [ ] Parse every JSON file and PowerShell script successfully.

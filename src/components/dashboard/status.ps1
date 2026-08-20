@@ -20,13 +20,16 @@ Get-ChildItem -LiteralPath $startupFolder -Filter "*.lnk" -ErrorAction SilentlyC
     } catch {}
 }
 
+$stateRoot = Join-Path $env:LOCALAPPDATA "ObsidianGlassDesktop\dashboard"
+$dataRoot = Join-Path $stateRoot "data"
 $layout = $null
-try { $layout = [IO.File]::ReadAllText($projectRoot + "\data\mac-widget-layout.json", [Text.Encoding]::UTF8) | ConvertFrom-Json } catch {}
+try { $layout = [IO.File]::ReadAllText((Join-Path $dataRoot "mac-widget-layout.json"), [Text.Encoding]::UTF8) | ConvertFrom-Json } catch {}
 $widgetCount = 0
 if ($null -ne $layout -and $null -ne $layout.widgets) { $widgetCount = @($layout.widgets.PSObject.Properties).Count }
-$speechPython = $projectRoot + "\speech-runtime\.venv\Scripts\python.exe"
-$speechModel = $projectRoot + "\speech-runtime\models\models--mobiuslabsgmbh--faster-whisper-large-v3-turbo"
-$speechGpu = $projectRoot + "\speech-runtime\cuda\libs\cublas64_12.dll"
+$speechRoot = Join-Path $env:LOCALAPPDATA "ObsidianGlassDesktop\runtime\speech"
+$speechPython = Join-Path $speechRoot "python.exe"
+$speechModel = Join-Path $speechRoot "models\models--mobiuslabsgmbh--faster-whisper-large-v3-turbo"
+$speechGpu = Join-Path $speechRoot "cuda\libs\cublas64_12.dll"
 
 [pscustomobject]@{
     Running = ($running.Count -eq 1)

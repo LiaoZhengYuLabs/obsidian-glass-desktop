@@ -4,17 +4,17 @@ $projectFolder = Split-Path -Parent $MyInvocation.MyCommand.Path
 $pathsHelper = Join-Path (Split-Path -Parent (Split-Path -Parent $projectFolder)) "lib\ObsidianGlass.Paths.ps1"
 if (Test-Path -LiteralPath $pathsHelper -PathType Leaf) { . $pathsHelper }
 $dockFolder = Get-ObsidianGlassDockRoot
-if ([string]::IsNullOrWhiteSpace($dockFolder)) { throw "MyDockFinder was not found. Set OBSIDIAN_GLASS_DOCK_ROOT first." }
-$backupRoot = Join-Path (Join-Path $env:LOCALAPPDATA 'ObsidianGlassDesktop') 'backups'
+if ([string]::IsNullOrWhiteSpace($dockFolder)) { throw "MyDockFinder was not found." }
+$backupRoot = "$projectFolder\backups"
 $stamp = Get-Date -Format "yyyyMMdd-HHmmss"
 $backupFolder = "$backupRoot\wechat-preview-$stamp"
 $pointerFile = "$backupRoot\latest-wechat-preview.txt"
 $configFiles = @("$dockFolder\ico.ini", "$dockFolder\ico_bak.ini")
-$shortcutPath = Get-ChildItem -LiteralPath ([Environment]::GetFolderPath('CommonStartMenu')) -Filter '微信.lnk' -Recurse -File -ErrorAction SilentlyContinue | Select-Object -First 1 | ForEach-Object { $_.FullName }
+$shortcutPath = Get-ChildItem -LiteralPath ([Environment]::GetFolderPath("CommonStartMenu")) -Filter "微信.lnk" -Recurse -ErrorAction SilentlyContinue | Select-Object -First 1 -ExpandProperty FullName
 $encoding = [System.Text.Encoding]::Unicode
 
 New-Item -ItemType Directory -Path $backupFolder -Force | Out-Null
-if (Test-Path -LiteralPath $shortcutPath) {
+if (![string]::IsNullOrWhiteSpace($shortcutPath) -and (Test-Path -LiteralPath $shortcutPath)) {
     Copy-Item -LiteralPath $shortcutPath -Destination $backupFolder -Force
 }
 
@@ -33,14 +33,15 @@ foreach ($configFile in $configFiles) {
     }
 
     $entry = $content.Substring($start, $end - $start)
-    $wechatExe = Get-ChildItem -Path (Join-Path ${env:ProgramFiles} 'Tencent\Weixin'), (Join-Path ${env:ProgramFiles(x86)} 'Tencent\Weixin') -Filter 'Weixin.exe' -File -ErrorAction SilentlyContinue | Select-Object -First 1 | ForEach-Object { $_.FullName }
-    if ([string]::IsNullOrWhiteSpace($wechatExe)) { throw "Weixin.exe was not found." }
-    $shortcutValue = if ([string]::IsNullOrWhiteSpace($shortcutPath)) { '' } else { $shortcutPath.ToLowerInvariant() }
+    if ($entry -notmatch "(?im)^realpath=c:\\program files\\tencent\\weixin\\weixin\.exe\s*$") {
+        throw "The ico4 entry does not point to Weixin.exe: $configFile"
+    }
+
     $entry = "[ico4]`r`n" +
         "tag=微信`r`n" +
         "appname=微信.lnk`r`n" +
-        "filepath=" + $shortcutValue + "`r`n" +
-        "realpath=" + $wechatExe.ToLowerInvariant() + "`r`n"
+        ("filepath=" + $shortcutPath + "`r`n") +
+        "realpath=c:\program files\tencent\weixin\weixin.exe`r`n"
     $content = $content.Substring(0, $start) + $entry + $content.Substring($end)
     [System.IO.File]::WriteAllText($configFile, $content, $encoding)
 }

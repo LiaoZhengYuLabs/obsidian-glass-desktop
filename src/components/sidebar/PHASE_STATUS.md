@@ -1,4 +1,4 @@
-# Obsidian AI Workspace Status
+﻿# Obsidian AI Workspace Status
 
 ## Completed
 

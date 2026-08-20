@@ -1,4 +1,4 @@
-# Asset Catalog
+﻿# Asset Catalog
 
 | Asset group | Location | Public status | Notes |
 |---|---|---|---|
